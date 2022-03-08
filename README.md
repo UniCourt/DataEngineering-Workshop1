@@ -2,7 +2,7 @@
 ### Workshop 1 Agenda
 1. **Introduction to Docker.**
 
-    - Building the Docker image for Worker using python:3.8.12-alpine3.14
+    - Building the Docker image for Worker using python:3.10.2-alpine3.15
    
     * *docker*
    
@@ -10,11 +10,11 @@
     * *Images*
    
         Docker images are read-only templates with instructions to create a docker container. Docker image can be pulled from a Docker hub and used as it is, or you can add additional instructions to the base image and create a new and modified docker image. You can create your own docker images also using a dockerfile. Create a dockerfile with all the instructions to create a container and run it; it will create your custom docker image.
-    * *To create docker image for python:3.8.12-alpine3.14*
+    * *To create docker image for python:3.10.2-alpine3.15*
    
         1)Create a  dockerfile
 		
-                FROM python:3.8.5-alpine3.12
+                FROM python:3.10.2-alpine3.15
                 # Create directories  
                 RUN mkdir -p /root/workspace/src
                 # Switch to project directory
@@ -137,7 +137,7 @@
 		
         *Creating a dockerfile in same directory *
 		
-            FROM python:3.8.5-alpine3.12
+            FROM python:3.10.2-alpine3.15
             # Create directories  
             RUN mkdir -p /root/workspace/src
             COPY ./web_scraping_sample.py  /root/workspace/src
@@ -219,7 +219,7 @@
 
      - Update the existing docker image to support PostgreSQL
      
-             FROM python:3.8.5-alpine3.12
+             FROM python:3.10.2-alpine3.15
              RUN apk update
              RUN apk add postgresql
              RUN chown postgres:postgres /run/postgresql/
