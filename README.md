@@ -1,16 +1,27 @@
 # DataEngineering-Workshop1
 ### Workshop 1 Agenda
+**Prerequisites**
+
+      Linux Machine
+      Docker
+      Python 3.10
+      PostgreSQL 13
+      Beautifulsoup
+      urllib2
+      requests
+      git
+
 1. **Introduction to Docker.**
 
     - Building the Docker image for Worker using python:3.10.2-alpine3.15
    
-    * *docker*
+    * ***docker***
    
         Docker is a container management service. The keywords of Docker are   develop, ship and run anywhere. The whole idea of Docker is for developers to easily develop applications, ship them into containers which can then be deployed anywhere.
-    * *Images*
+    * ***Images***
    
         Docker images are read-only templates with instructions to create a docker container. Docker image can be pulled from a Docker hub and used as it is, or you can add additional instructions to the base image and create a new and modified docker image. You can create your own docker images also using a dockerfile. Create a dockerfile with all the instructions to create a container and run it; it will create your custom docker image.
-    * *To create docker image for python:3.10.2-alpine3.15*
+    * ***To create docker image for python:3.10.2-alpine3.15***
    
         1)Create a  dockerfile
 		
@@ -25,7 +36,7 @@
                 Docker build -t Simple_python
 
 2. **Introduction to Webscrapping.**
-    - Beautifulsoup
+    - **Beautifulsoup**
       - *Introduction*       
           Beautiful Soup is a python package which allows us to pull  data out of HTML and XML documents.
       - *Beautiful Soup - Installation*
@@ -36,38 +47,39 @@
           from bs4 import BeautifulSoup
       - *Important Methods*
                         
-        1) find(name, attrs, recursive, string, **kwargs)
+        1) **find**(name, attrs, recursive, string, **kwargs)
       
            scan the entire document to find only one result.
 
-        2) find_all(name, attrs, recursive, string, limit, **kwargs)
+        2) **find_all**(name, attrs, recursive, string, limit, **kwargs)
      
            You can use find_all to extract all the occurrences of a particular tag from the page response as
 
-    - Regex
-        *Introduction*
+    - **Regex**
+   
+        ***Introduction***
    
         The Python module re provides full support for Perl-like regular expressions in Python
    
-        *Important methods*
+        ***Important methods***
    
-        * re.match(pattern, string, flags=0)
+        * **re.match**(pattern, string, flags=0)
    
           The re.match function returns a match object on success, None on failure. We usegroup(num) or groups() function of the match object to get a matched expression
    
-        * re.search(pattern, string, flags=0)
+        * **re.search**(pattern, string, flags=0)
    
           The search() function searches the string for a match, and returns a Match object if there is a match.
    
-        * re.findall(pattern, string, flags=0))
+        * **re.findall**(pattern, string, flags=0))
    
           function returns a list containing all matches.
    
-        * re.sub(pattern,replace_string,string)
+        * **re.sub**(pattern,replace_string,string)
    
           The sub() function replaces the matches with the text of your choice:
    
-       *Metacharacters*
+       ***Metacharacters***
    
                         []	a set of a character
                         .	 any character
@@ -87,7 +99,7 @@
                         \D		Matches Nondigits
     - urllib2/requests 
    
-        *Request*
+        ***Request***
    
             Introduction
    
@@ -101,7 +113,7 @@
                         Sends a POST request to the specified url
                 3)delete(url,args)
                         Sends a DELETE request to the specified url
-        *Urllib*
+        ***Urllib***
    
             Introduction
             It is a Python 3 package that allows you to access, and interact with, websites using their URL’s (Uniform Resource Locator). It has several modules for working with URL’s, these are shown in the illustration below:	
@@ -111,7 +123,7 @@
             Urllib.error
                 This module is used to catch exceptions encountered from url.request
 
-    - Writing a script using the above packages and run it in Docker.
+    - **Writing a script using the above packages and run it in Docker**.
    
            *web_scraping_sample.py*
             import requests
@@ -135,7 +147,7 @@
                 tempstring=tempstring+"\n"+qes_list[i]+"\n"+ans_list[i]+"\n--------------------------------------------------------------------------------------------------\n\n"
                 print(tempstring)
 		
-        *Creating a dockerfile in same directory *
+        ***Creating a dockerfile in same directory***
 		
             FROM python:3.10.2-alpine3.15
             # Create directories  
@@ -144,17 +156,17 @@
             # Switch to project directory
             WORKDIR /root/workspace/src
             RUN python web_scraping_sample.py
-    - *Build dokcer image*
+    - ***Build dokcer image***
    
          docker build -t simple_python
-    - *Run image as a docker container*
+    - ***Run image as a docker container***
    
          docker run -d  --name container1 simple_python
 
 
 
  3. **Introduction to PostgreSQL.**
-     - Key Features of PostgreSQL.
+     - **Key Features of PostgreSQL**.
         - Free to download
         - Compatible with Data Integrity
         - Compatible with multiple data types
@@ -162,7 +174,7 @@
         - Secure
         -  Highly Reliable:
  	
-     - JOINS.
+     - **JOINS**.
         - The CROSS JOIN
         - The INNER JOIN
         - The LEFT OUTER JOIN
@@ -209,7 +221,7 @@
                 SELECT ... FROM table1 FULL OUTER JOIN table2 ON conditional_expression ...
             Based on the above tables, we can write an inner join as follows −
                 SELECT EMP_ID, NAME, DEPT FROM COMPANY FULL OUTER JOIN DEPARTMENT   ON COMPANY.ID = DEPARTMENT.EMP_ID;
-     - Things to Note
+     - **Things to Note**
     
          - You can do select with limit 
          - You are able to do group by, order by ,having clauses, etc.
@@ -217,7 +229,7 @@
              > delete from  student where sid in (select id from table limit 10)
              > update from  student set city=”mangalore”where sid in (select id from table limit 10)
 
-     - Update the existing docker image to support PostgreSQL
+     - **Update the existing docker image to support PostgreSQL**
      
              FROM python:3.10.2-alpine3.15
              RUN apk update
@@ -234,7 +246,7 @@
                 Docker build -t simple_python
 
  4. **Introduction to Github.**
-     - Setting up github.
+     - **Setting up github**.
    
          Make a repository in GitHub
    
@@ -254,27 +266,27 @@
              git add <file path>	//here the file path is which file you modified ready the file for commit
              git commit -m "A commit from my local computer"	      //here you commit the changes
              git push origin <brachname> 	//here you push the changes to your remote repository and brach name is in which brach you pushing this
-     - basic commands of git
+     - **Basic commands of git**
    
-         * git init
+         * **git init**
       
             he command git init is used to create an empty Git repository.
    
-         * git add
+         * **git add**
       
              Add command is used after checking the status of the files, to add t	hose files to the staging area.
              Before running the commit command, "git add" is used to add any new or modified files.
    
-         * git commit
+         * **git commit**
       
              The commit command makes sure that the changes are saved to the local repository.
              The command "git commit –m <message>" allows you to describe everyone and help them understand what has happened.
-         * git status
+         * **git status**
       
              The git status command tells the current state of the repository.
       
              The command provides the current working branch. If the files are in the staging area, but not committed, it will be shown by the git status. Also, if there are no changes, it will show the message no changes to commit, working directory clean.
-         * git config
+         * **git config**
       
            The git config command is used initially to configure the user.name and user.email. This specifies what email id and username will be used from a local repository.
 
