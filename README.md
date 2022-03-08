@@ -227,6 +227,7 @@
          - You are able to do group by, order by ,having clauses, etc.
          - Your not able to limit delete and update directly. You need to use inner query
              > delete from  student where sid in (select id from table limit 10)
+           
              > update from  student set city=”mangalore”where sid in (select id from table limit 10)
 
      - **Update the existing docker image to support PostgreSQL**
