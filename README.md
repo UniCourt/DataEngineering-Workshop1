@@ -238,10 +238,9 @@
              RUN chown postgres:postgres /run/postgresql/
              # Create directories  
              RUN mkdir -p /root/workspace/src
-             COPY ./one.py  /root/workspace/src
+             COPY ./web_scraping_sample.py  /root/workspace/src
              # Switch to project directory
              WORKDIR /root/workspace/src
-             RUN python web_scraping_sample.py
 
             Goto the directory where you created Dockerfile
                 Docker build -t simple_python
