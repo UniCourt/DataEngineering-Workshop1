@@ -1,17 +1,48 @@
-# DataEngineering-Workshop1
-### Workshop 1 Agenda
-**Prerequisites**
+# Data Engineering Workshop
 
-      Linux Machine
-      Docker
-      Python 3.10
-      PostgreSQL 13
-      Beautifulsoup
-      urllib2
-      requests
-      git
+One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, PostgreSQL and Git.
 
-1. **Introduction to Docker.**
+## Prerequisite
+
+##### Any Linux machine/VM with following packages installed
+- Python 3.6 or above
+- [docker-ce](https://docs.docker.com/engine/install/ubuntu/)
+- [docker-compose](https://docs.docker.com/compose/install/)
+- pip3
+- git (any recent version)
+- PostgreSQL 13
+- psycopg2
+- bs4
+- urllib2
+- requests
+
+##### GitHub account
+- Create an account on [GitHub](https://github.com/join) (if you don't already have one)
+- Fork [this](https://github.com/UniCourt/DataEngineering-Workshop1) repository and then clone it to your machine
+- You can refer [this](https://docs.github.com/en/get-started/quickstart/fork-a-repo) guide to understand how to fork and clone
+
+## What will you learn by the end of this workshop?
+- By the end of this workshop you will learn how to build docker image and it's usage.
+- You will learn how to scrape a website using urllib/requests and Beautifulsoup.
+- You will learn Regular Expressions and how to work with it.
+- You will learn key features of PostgreSQL.
+- You will learn how to dockerize your project.
+
+## Schedule
+| Time                    | Topics
+| ----------------------- |-------
+| 09:00 - 11:00           |  [`Introduction to Docker`](#Introduction-to-Docker)
+| 11:00 - 01:00           |  [`Introduction to Webscrapping.`](#Introduction-to-Webscrapping)
+| 1:00 -  2:00            |  `Break`
+| 02:00 - 03:00           |  [`Introduction to PostgreSQL`](#Introduction-to-PostgreSQL)
+| 03:30 - 04:00           |  [`Dockerizing a project`]
+| 04:00 - 04:30            |  [`Introduction to Github`](#Introduction-to-Github)
+| 04:30 - 05:00            |  `Q & A and Wrapping Up`
+
+
+## Workshop 1 Agenda
+
+1. ###Introduction to Docker.
 
     - Building the Docker image for Worker using python:3.10.2-alpine3.15
    
@@ -33,9 +64,9 @@
 
         2)Goto the directory where you created Dockerfile
    
-                Docker build -t Simple_python
+                docker build ./ -t Simple_python
 
-2. **Introduction to Webscrapping.**
+2. ###Introduction to Webscrapping.
     - **Beautifulsoup**
       - *Introduction*       
           Beautiful Soup is a python package which allows us to pull  data out of HTML and XML documents.
@@ -165,7 +196,7 @@
 
 
 
- 3. **Introduction to PostgreSQL.**
+ 3. ###Introduction to PostgreSQL.
      - **Key Features of PostgreSQL**.
         - Free to download
         - Compatible with Data Integrity
@@ -245,7 +276,7 @@
             Goto the directory where you created Dockerfile
                 Docker build -t simple_python
 
- 4. **Introduction to Github.**
+ 4. ###Introduction to Github.
      - **Setting up github**.
    
          Make a repository in GitHub
@@ -290,6 +321,42 @@
       
            The git config command is used initially to configure the user.name and user.email. This specifies what email id and username will be used from a local repository.
 
- 5. **Workshop 1 Home Work.**
+ 5. ###Webscrapping with docker.
+   - Create a new docker file.
+     
+           FROM python:3.10.2-alpine3.15
+           # Create directories  
+           RUN mkdir -p /root/workspace/src
+           COPY ./web_scraping_sample.py  /root/workspace/src
+           # Switch to project directory
+           WORKDIR /root/workspace/src
+        
+   - Create a docker-compose file.
+     
+         version: "3"
+         services:
+           pyhton_service:
+             build:
+               context: ./
+               dockerfile: Dockerfile
+             image: workshop1
+             container_name: workshop_python_container
+             stdin_open: true #  docker attach container_id
+             tty: true
+             ports:
+              - "8000:8000"
+             volumes:
+              - .:/app
+   - Get the containers up.
+     
+            docker-compose up -d
+     
+   - Login to the container.
+     
+         docker exec -it python_service sh
+   - Run the script for web scrapping inside the container.
+      
+         python web_scraping_sample.py
 
+ 6. ###Workshop 1 Home Work.
          A PR should be given where the data is scrapped from Lorem Ipsum - All the facts - Lipsum generator[ Lorem Ipsum - All the facts - Lipsum generator](https://www.lipsum.com/)   website and save each section from that page in the database.

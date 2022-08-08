@@ -5,7 +5,8 @@ RUN apk update
 RUN apk add postgresql
 RUN chown postgres:postgres /run/postgresql/
 # Install requirements
-RUN pip install -r requirements.txt
+COPY ./requirements.txt /tmp
+RUN pip install -r /tmp/requirements.txt
 # For psycopg2
 RUN apk add --virtual postgresql-deps libpq-dev
 # Create directories
