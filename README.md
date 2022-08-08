@@ -196,7 +196,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 
 
 
- 3. ###Introduction to PostgreSQL.
+ 3. ### Introduction to PostgreSQL.
      - **Key Features of PostgreSQL**.
         - Free to download
         - Compatible with Data Integrity
@@ -276,7 +276,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
             Goto the directory where you created Dockerfile
                 Docker build -t simple_python
 
- 4. ###Introduction to Github.
+ 4. ### Introduction to Github.
      - **Setting up github**.
    
          Make a repository in GitHub
@@ -321,7 +321,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
       
            The git config command is used initially to configure the user.name and user.email. This specifies what email id and username will be used from a local repository.
 
- 5. ###Webscrapping with docker.
+ 5. ### Webscrapping with docker.
    - Create a new docker file.
      
            FROM python:3.10.2-alpine3.15
@@ -358,5 +358,5 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
       
          python web_scraping_sample.py
 
- 6. ###Workshop 1 Home Work.
+ 6. ### Workshop 1 Home Work.
          A PR should be given where the data is scrapped from Lorem Ipsum - All the facts - Lipsum generator[ Lorem Ipsum - All the facts - Lipsum generator](https://www.lipsum.com/)   website and save each section from that page in the database.
