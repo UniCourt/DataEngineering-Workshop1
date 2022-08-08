@@ -42,7 +42,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 
 ## Workshop 1 Agenda
 
-## Introduction to Docker.
+1. ### Introduction to Docker.
 
     - Building the Docker image for Worker using python:3.10.2-alpine3.15
    
@@ -66,7 +66,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
    
                 docker build ./ -t Simple_python
 
-2. ###Introduction to Webscrapping.
+2. ### Introduction to Webscrapping.
     - **Beautifulsoup**
       - *Introduction*       
           Beautiful Soup is a python package which allows us to pull  data out of HTML and XML documents.
