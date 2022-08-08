@@ -10,11 +10,6 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 - [docker-compose](https://docs.docker.com/compose/install/)
 - pip3
 - git (any recent version)
-- PostgreSQL 13
-- psycopg2
-- bs4
-- urllib2
-- requests
 
 ##### GitHub account
 - Create an account on [GitHub](https://github.com/join) (if you don't already have one)
