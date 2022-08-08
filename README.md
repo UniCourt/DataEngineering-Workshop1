@@ -6,10 +6,14 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 
 ##### Any Linux machine/VM with following packages installed
 - Python 3.6 or above
-- [docker-ce](https://docs.docker.com/engine/install/ubuntu/)
+- docker
 - [docker-compose](https://docs.docker.com/compose/install/)
 - pip3
 - git (any recent version)
+
+##### Docker
+- To install docker go to your cloned repository and run the following command
+- `sudo prerequisites/install_docker.sh`
 
 ##### GitHub account
 - Create an account on [GitHub](https://github.com/join) (if you don't already have one)
@@ -316,6 +320,8 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
          * **git config**
       
            The git config command is used initially to configure the user.name and user.email. This specifies what email id and username will be used from a local repository.
+        ## General git flow:
+         ![git flow](/prerequisites/gitflow.png)
 
  5. ### Webscrapping with docker.
    - Create a new docker file.
