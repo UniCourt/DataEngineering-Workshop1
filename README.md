@@ -42,7 +42,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 
 ## Workshop 1 Agenda
 
-##Introduction to Docker.
+## Introduction to Docker.
 
     - Building the Docker image for Worker using python:3.10.2-alpine3.15
    
