@@ -11,14 +11,14 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 - pip3
 - git (any recent version)
 
-##### Docker
-- To install docker go to your cloned repository and run the following command
-- `sudo prerequisites/install_docker.sh`
-
 ##### GitHub account
 - Create an account on [GitHub](https://github.com/join) (if you don't already have one)
 - Fork [this](https://github.com/UniCourt/DataEngineering-Workshop1) repository and then clone it to your machine
 - You can refer [this](https://docs.github.com/en/get-started/quickstart/fork-a-repo) guide to understand how to fork and clone
+
+##### Docker
+- To install docker go to your cloned repository and run the following command
+- `sudo prerequisites/install_docker.sh`
 
 ## What will you learn by the end of this workshop?
 - By the end of this workshop you will learn how to build docker image and it's usage.
