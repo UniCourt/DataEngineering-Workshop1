@@ -22,7 +22,7 @@ Docker is a container management service. The keywords of Docker are develop, sh
 <br />
 
 ## Docker post-installation setup
-Do the optional precodure configuration to work better with Docker.
+Do the optional procedure configuration to work better with Docker.
 
 ### Run Docker as non-root user
 To create the docker group and add your user:
@@ -81,15 +81,15 @@ To list all the images that is locallt available in the host machine, simply run
 Command:
 ```
 docker images
-Example:
 ```
+```
+Example:
 REPOSITORY  TAG  IMAGE ID       CREATED      SIZE
 alpine     latest  c059bfaa849c 6 weeks ago  5.59MB
 ```
-docker images
-```
+<br>
 
-### 3. Run docker image
+### 4. Run docker image
 The docker run command first creates a writeable container layer over the specified image, and then starts it using the specified command.
 <br>
 Command:
