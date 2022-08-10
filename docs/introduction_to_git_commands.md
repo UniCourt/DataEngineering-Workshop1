@@ -26,7 +26,7 @@ Make a local change, commit, and push
 <br />
 
 ### General git flow:
-         ![git flow](gitflow.png)
+![git flow](gitflow.png)
 
 ```
 Basic commands of git:
