@@ -6,7 +6,7 @@ Key Features of PostgreSQL:
 - Compatible with multiple data types
 - Highly extensible
 - Secure
--  Highly Reliable:
+- Highly Reliable
 ```
 <br />
 
@@ -70,7 +70,6 @@ Things to Note
 - You are able to do group by, order by ,having clauses, etc.
 - Your not able to limit delete and update directly. You need to use inner query
  > delete from  student where sid in (select id from table limit 10)
-
  > update from  student set city=”mangalore”where sid in (select id from table limit 10)
 ```
 <br />
