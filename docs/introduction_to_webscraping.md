@@ -97,6 +97,8 @@ html = """
 <html>
 <head> <title> Beautiful Soup Example </title> </head>
 </html>
+"""
+
 from bs4 import BeautifulSoup
 soup = BeautifulSoup(html, 'html.parser')
 print(soup.title)
@@ -143,7 +145,7 @@ Metacharacters
         ?	zero or one occurrences
         {}	exactly specified number of occurrence
         () 	capture a group
-Important Special Sequences*
+Important Special Sequences
         \w		Matches word characters.
         \W		Matches nonword characters.
         \s		Matches whitespace. Equivalent to [\t\n\r\f].
@@ -198,7 +200,8 @@ RUN python web_scraping_sample.py
 <br />
 
 ```
-Build docker image and run
+Build docker image and run:
+
 docker build ./ -t simple_python
 docker run -d  --name container1 simple_python
 ```
