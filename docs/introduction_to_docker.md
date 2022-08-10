@@ -1,23 +1,124 @@
-### Introduction to Docker.
+# Introduction to Docker.
 
-    - Building the Docker image for Worker using python:3.10.2-alpine3.15
-   
-    * ***docker***
-   
-        Docker is a container management service. The keywords of Docker are   develop, ship and run anywhere. The whole idea of Docker is for developers to easily develop applications, ship them into containers which can then be deployed anywhere.
-    * ***Images***
-   
-        Docker images are read-only templates with instructions to create a docker container. Docker image can be pulled from a Docker hub and used as it is, or you can add additional instructions to the base image and create a new and modified docker image. You can create your own docker images also using a dockerfile. Create a dockerfile with all the instructions to create a container and run it; it will create your custom docker image.
-    * ***To create docker image for python:3.10.2-alpine3.15***
-   
-        1)Create a  dockerfile
-		
-                FROM python:3.10.2-alpine3.15
-                # Create directories  
-                RUN mkdir -p /root/workspace/src
-                # Switch to project directory
-                WORKDIR /root/workspace/src
+## Video : Introduction to Docker and Containers 
 
-        2)Goto the directory where you created Dockerfile
+
+Docker is a container management service. The keywords of Docker are develop, ship and run anywhere. The whole idea of Docker is for developers to easily develop applications, ship them into containers which can then be deployed anywhere.
+
+[![Video : Introduction to Docker and Containers](https://i3.ytimg.com/vi/JSLpG_spOBM/hqdefault.jpg)](https://www.youtube.com/watch?v=JSLpG_spOBM&ab_channel=RyanSchachte)
+
+<br />
+
+## Features of Docker
+
+- Docker has the ability to reduce the size of development by providing a smaller footprint of the operating system via containers.
+
+- With containers, it becomes easier for teams across different units, such as development, QA and Operations to work seamlessly across applications.
+
+- You can deploy Docker containers anywhere, on any physical and virtual machines and even on the cloud.
+
+- Since Docker containers are pretty lightweight, they are very easily scalable.
+
+<br />
+
+## Docker post-installation setup
+Do the optional precodure configuration to work better with Docker.
+
+### Run Docker as non-root user
+To create the docker group and add your user:
+1. Create the docker group.
+```
+sudo groupadd docker
+```
+2. Add your user to the docker group.
+```
+sudo usermod -aG docker $USER
+```
+
+3. Activate the changes to groups:
+```
+newgrp docker 
+```
+4. Verify that you can run docker commands without sudo.
+```
+docker images
+```
+
+<br />
+
+## Docker Commands
+Docker is a containerization system which packages and runs the application with its dependencies inside a container. There are several docker commands you must know when working with Docker.
+### 1. Docker version
+To find the installed docker version
+Command:
+```
+docker  --version
+``` 
+Example:
+```
+docker --version
+Docker version 20.10.12, build e91ed57
+```
+
+<br>
+
+### 2. Downloading image
+To work with any ocker image we need to download the docker image first.<br /> 
+Command:
+```
+docker pull <IMAGE>
+```
+Example of pulling alpine:latest image
+```
+docker pull alpine:latest
+```
+
+<br>
+
+### 3. List all the docker images
+To list all the images that is locallt available in the host machine, simply run the below command. This will list all the docker images in the local system.
+<br />
+Command:
+```
+docker images
+Example:
+```
+REPOSITORY  TAG  IMAGE ID       CREATED      SIZE
+alpine     latest  c059bfaa849c 6 weeks ago  5.59MB
+```
+docker images
+```
+
+### 3. Run docker image
+The docker run command first creates a writeable container layer over the specified image, and then starts it using the specified command.
+<br>
+Command:
+```
+docker run [options] <IMAGE>
+```
+> Explore options [here](https://docs.docker.com/engine/reference/run/)
+
+
+Example of running alpine:latest image, the options -t allows us to acces the terminal and -i gets stdin stream added. Basicaly using -ti adds the terminal driver.
+```
+docker run -t -i alpine:latest
+or
+docker run -ti alpine:latest
+```
+
+<br />
+
+## Create docker image for python:3.10.2-alpine3.15
    
-                docker build ./ -t Simple_python
+Create a  dockerfile
+```
+FROM python:3.10.2-alpine3.15
+# Create directories  
+RUN mkdir -p /root/workspace/src
+# Switch to project directory
+WORKDIR /root/workspace/src
+```
+Goto the directory where you created Dockerfile
+```
+docker build ./ -t Simple_python
+```
