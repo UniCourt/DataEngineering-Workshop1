@@ -1,4 +1,4 @@
-# Introduction to Git.
+# Introduction to Git
 <br />
 
 ### Setting up github:
