@@ -50,4 +50,5 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 | 02:00 - 03:00 |  [`Introduction to PostgreSQL`](/docs/introduction_to_postgresql.md)
 | 03:00 - 04:00 |  [`Dockerizing a project`](/docs/working_with_docker_container.md)
 | 04:00 - 04:30 |  [`Introduction to Github`](/docs/introduction_to_git_commands.md)
-| 04:30 - 05:00 |  `Q & A and Wrapping Up`
+| 04:30 - 04:45 |  `Q & A`
+| 04:45 - 05:00 |  [`Wrapping Up`](/docs/workshop1_home_work.md)

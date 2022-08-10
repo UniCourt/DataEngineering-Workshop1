@@ -5,7 +5,7 @@
 A Docker container image is a lightweight, standalone, executable package of software that includes everything needed 
 to run an application: code, runtime, system tools, system libraries and settings
 ```
-> Explore [here](https://www.geeksforgeeks.org/python-urllib-module/)
+> Explore [here](https://www.docker.com/resources/what-container/#:~:text=A%20Docker%20container%20image%20is,tools%2C%20system%20libraries%20and%20settings.)
 
 <br />
 

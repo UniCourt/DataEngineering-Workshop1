@@ -1,2 +1,7 @@
-### Workshop 1 Home Work.
-         A PR should be given where the data is scrapped from Lorem Ipsum - All the facts - Lipsum generator[ Lorem Ipsum - All the facts - Lipsum generator](https://www.lipsum.com/)   website and save each section from that page in the database.
+# Workshop 1 Homework.
+
+### Aim: Scrape the website and store blog data in a PostgreSQL database
+
+- Write a Python program to Scrape the pages from [Python Blogs](https://blog.python.org/) and save the data into the DB.
+- Dockerize the project.
+
