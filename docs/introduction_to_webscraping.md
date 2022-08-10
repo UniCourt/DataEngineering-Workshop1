@@ -17,12 +17,12 @@ Important Methods:
 
     1)get(url,params,args)
             Sends a GET request to the specified url
-    2)Post(url,data,json,args)
+    2)post(url,data,json,args)
             Sends a POST request to the specified url
     3)delete(url,args)
             Sends a DELETE request to the specified url
 ```    
-> Explore options [here](https://www.w3schools.com/python/module_requests.asp)
+> Explore [here](https://www.w3schools.com/python/module_requests.asp)
 
 <br />
      
@@ -50,7 +50,7 @@ Urllib.request
 Urllib.error
     This module is used to catch exceptions encountered from url.request
 ```
-> Explore options [here](https://www.geeksforgeeks.org/python-urllib-module/)
+> Explore [here](https://www.geeksforgeeks.org/python-urllib-module/)
 
 <br />
 
@@ -78,16 +78,16 @@ pip install beautifulsoup4
 ```
 Important Methods
                 
-1) **find**(name, attrs, recursive, string, **kwargs)
+find(name, attrs, recursive, string, **kwargs)
 
    scan the entire document to find only one result.
 
-2) **find_all**(name, attrs, recursive, string, limit, **kwargs)
+find_all(name, attrs, recursive, string, limit, **kwargs)
 
    You can use find_all to extract all the occurrences of a particular tag from the html
 
 ```
-> Explore options [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+> Explore [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 <br />
 

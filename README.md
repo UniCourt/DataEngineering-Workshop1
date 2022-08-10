@@ -2,7 +2,7 @@
 
 One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, PostgreSQL and Git.
 
-## Prerequisite
+## Prerequisites
 
 ### Any Linux machine/VM with following packages installed
 - Python 3.6 or above
@@ -12,7 +12,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 - git (any recent version)
 
 ### GitHub account
-- Create an account on [GitHub](https://github.com/join) (if you don't already have one)
+- Create an account on [GitHub](https://github.com/join) (Only if you do not have an account)
 - Fork [this](https://github.com/UniCourt/DataEngineering-Workshop1) repository and then clone it to your machine
 - You can refer [this](https://docs.github.com/en/get-started/quickstart/fork-a-repo) guide to understand how to fork and clone
 
@@ -42,12 +42,12 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 - You will learn how to dockerize your project.
 
 ## Schedule
-| Time                    | Topics
-| ----------------------- |-------
-| 09:00 - 11:00           |  [`Introduction to Docker`](/docs/introduction_to_docker.md)
-| 11:00 - 01:00           |  [`Introduction to Webscrapping.`](/docs/introduction_to_webscraping.md)
-| 1:00 -  2:00            |  `Break`
-| 02:00 - 03:00           |  [`Introduction to PostgreSQL`](/docs/introduction_to_postgresql.md)
-| 03:30 - 04:00           |  [`Dockerizing a project`](/docs/working_with_docker_container.md)
-| 04:00 - 04:30            |  [`Introduction to Github`](/docs/introduction_to_git_commands.md)
-| 04:30 - 05:00            |  `Q & A and Wrapping Up`
+| Time          | Topics
+|---------------|-------
+| 09:00 - 11:00 |  [`Introduction to Docker`](/docs/introduction_to_docker.md)
+| 11:00 - 01:00 |  [`Introduction to Webscrapping.`](/docs/introduction_to_webscraping.md)
+| 01:00 - 02:00 |  `Break`
+| 02:00 - 03:00 |  [`Introduction to PostgreSQL`](/docs/introduction_to_postgresql.md)
+| 03:00 - 04:00 |  [`Dockerizing a project`](/docs/working_with_docker_container.md)
+| 04:00 - 04:30 |  [`Introduction to Github`](/docs/introduction_to_git_commands.md)
+| 04:30 - 05:00 |  `Q & A and Wrapping Up`

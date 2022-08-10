@@ -5,7 +5,7 @@
 A Docker container image is a lightweight, standalone, executable package of software that includes everything needed 
 to run an application: code, runtime, system tools, system libraries and settings
 ```
-> Explore options [here](https://www.geeksforgeeks.org/python-urllib-module/)
+> Explore [here](https://www.geeksforgeeks.org/python-urllib-module/)
 
 <br />
 
@@ -16,7 +16,7 @@ Compose is a tool for defining and running multi-container Docker applications.
 With Compose, you use a YAML file to configure your application’s services. 
 Then, with a single command, you create and start all the services from your configuration.
 ```
-> Explore options [here](https://docs.docker.com/compose/)
+> Explore [here](https://docs.docker.com/compose/)
 
 <br />
 

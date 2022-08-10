@@ -96,7 +96,7 @@ Command:
 ```
 docker run [options] <IMAGE>
 ```
-> Explore options [here](https://docs.docker.com/engine/reference/run/)
+> Explore [here](https://docs.docker.com/engine/reference/run/)
 
 
 Example of running alpine:latest image, the options -t allows us to acces the terminal and -i gets stdin stream added. Basicaly using -ti adds the terminal driver.
