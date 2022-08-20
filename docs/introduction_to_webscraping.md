@@ -195,13 +195,17 @@ RUN mkdir -p /root/workspace/src
 COPY ./web_scraping_sample.py  /root/workspace/src
 # Switch to project directory
 WORKDIR /root/workspace/src
-RUN python web_scraping_sample.py
+# Install required packages
+RUN pip install --upgrade pip
+RUN pip install requests bs4 html5lib
+CMD ["web_scraping_sample.py"]
+ENTRYPOINT ["python"]
 ```
 <br />
 
 ```
 Build docker image and run:
 
-docker build ./ -t simple_python
-docker run -d  --name container1 simple_python
+docker build --no-cache --network=host ./ -t simple_python
+docker run --network=host simple_python
 ```

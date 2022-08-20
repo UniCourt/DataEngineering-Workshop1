@@ -74,19 +74,101 @@ Things to Note
 ```
 <br />
 
+## Create PostgresSql docker container 
+#### Note: Add below container in existing docker-compose.yml file 
 ```
-Update the existing docker image to support PostgreSQL
-
-     FROM python:3.10.2-alpine3.15
-     RUN apk update
-     RUN apk add postgresql
-     RUN chown postgres:postgres /run/postgresql/
-     # Create directories  
-     RUN mkdir -p /root/workspace/src
-     COPY ./web_scraping_sample.py  /root/workspace/src
-     # Switch to project directory
-     WORKDIR /root/workspace/src
-
-Goto the directory where you created Dockerfile
-        Docker build -t simple_python
+  psql-db:
+    image: 'postgres:14'
+    container_name: psql-db
+    environment:
+      - PGPASSWORD=123456
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - '5434:5432'1
 ```
+
+```
+Get the containers up.
+     docker-compose up -d
+```
+
+```
+Login to the container.
+     docker exec -it psql-db bash
+```
+
+```
+Login to postgres database
+     psql -U postgres
+```
+
+# Example
+- Create database demo
+    ```
+    CREATE DATABASE demo;
+    \c demo
+    ```
+- Create table zoo_1 and zoo_2
+    ```
+    CREATE TABLE zoo_1 (
+        id INT PRIMARY KEY,
+        animal VARCHAR (100) NOT NULL
+    );
+    CREATE TABLE zoo_2 (
+        id INT PRIMARY KEY,
+        animal VARCHAR (100) NOT NULL
+    );
+    ```
+- Insert row
+    ```
+    INSERT INTO zoo_1(id, animal)
+    VALUES
+    (1, 'Lion'),
+    (2, 'Tiger'),
+    (3, 'Wolf'),
+    (4, 'Fox');
+  
+    INSERT INTO zoo_2(id, animal)
+    VALUES
+    (1, 'Tiger'),
+    (2, 'Lion'),
+    (3, 'Rhino'),
+    (4, 'Panther');
+    ```
+- Run following queries
+  - Inner Join
+      ```
+      SELECT
+          zoo_1.id id_a,
+          zoo_1.animal animal_a,
+          zoo_2.id id_b,
+          zoo_2.animal animal_b
+      FROM
+          zoo_1 
+      INNER JOIN zoo_2 ON zoo_1.animal = zoo_2.animal;
+      ```
+  - Left Join
+    ```
+    SELECT
+        zoo_1.id,
+        zoo_1.animal,
+        zoo_2.id,
+        zoo_2.animal
+    FROM
+        zoo_1
+    LEFT JOIN zoo_2 ON zoo_1.animal = zoo_2.animal;
+    ```
+  - Right Join
+    ```
+    SELECT
+        zoo_1.id,
+        zoo_1.animal,
+        zoo_2.id,
+        zoo_2.animal
+    FROM
+        zoo_1
+    RIGHT JOIN zoo_2 ON zoo_1.animal = zoo_2.animal;
+    ```
+
+### Write a query for RIGHT OUTER JOIN and FULL OUTER JOIN. 

@@ -120,5 +120,5 @@ WORKDIR /root/workspace/src
 ```
 Goto the directory where you created Dockerfile
 ```
-docker build ./ -t Simple_python
+docker build ./ -t simple_python
 ```

@@ -25,14 +25,21 @@ Then, with a single command, you create and start all the services from your con
 ```
    - Create a new docker file.
      
-           FROM python:3.10.2-alpine3.15
-           # Create directories  
-           RUN mkdir -p /root/workspace/src
-           COPY ./web_scraping_sample.py  /root/workspace/src
-           # Switch to project directory
-           WORKDIR /root/workspace/src
+            FROM python:3.10.2-alpine3.15
+            # Create directories  
+            RUN mkdir -p /root/workspace/src
+            COPY ./web_scraping_sample.py  /root/workspace/src
+            # Switch to project directory
+            WORKDIR /root/workspace/src
+            # Install required packages
+            RUN pip install --upgrade pip
+            RUN pip install requests bs4 html5lib
 ```
-<br />
+
+```
+Build docker image
+docker build --no-cache --network=host ./ -t workshop1 
+```
 
 ```
 Create a docker-compose file.
@@ -40,7 +47,7 @@ Filename: docker-compose.yml
      
 version: "3"
 services:
- pyhton_service:
+ python_service:
    build:
      context: ./
      dockerfile: Dockerfile
@@ -64,7 +71,7 @@ Get the containers up.
 
 ```
 Login to the container.
-     docker exec -it python_service sh
+     docker exec -it workshop_python_container sh
 ```
 <br />
 
