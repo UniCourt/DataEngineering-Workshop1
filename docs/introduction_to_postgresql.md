@@ -85,7 +85,7 @@ Things to Note
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=123456
     ports:
-      - '5434:5432'1
+      - '5434:5432'
 ```
 
 ```

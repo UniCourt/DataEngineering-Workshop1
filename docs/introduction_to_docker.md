@@ -96,7 +96,7 @@ Command:
 ```
 docker run [options] <IMAGE>
 ```
-> Explore [here](https://docs.docker.com/engine/reference/run/)
+> Explore here: [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
 
 
 Example of running alpine:latest image, the options -t allows us to acces the terminal and -i gets stdin stream added. Basicaly using -ti adds the terminal driver.

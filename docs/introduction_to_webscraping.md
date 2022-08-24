@@ -22,7 +22,7 @@ Important Methods:
     3)delete(url,args)
             Sends a DELETE request to the specified url
 ```    
-> Explore [here](https://www.w3schools.com/python/module_requests.asp)
+> Explore here: [https://www.w3schools.com/python/module_requests.asp](https://www.w3schools.com/python/module_requests.asp)
 
 <br />
      
@@ -50,7 +50,7 @@ Urllib.request
 Urllib.error
     This module is used to catch exceptions encountered from url.request
 ```
-> Explore [here](https://www.geeksforgeeks.org/python-urllib-module/)
+> Explore here: [https://www.geeksforgeeks.org/python-urllib-module/](https://www.geeksforgeeks.org/python-urllib-module/)
 
 <br />
 
@@ -87,7 +87,7 @@ find_all(name, attrs, recursive, string, limit, **kwargs)
    You can use find_all to extract all the occurrences of a particular tag from the html
 
 ```
-> Explore [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+> Explore here: [https://www.crummy.com/software/BeautifulSoup/bs4/doc/](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 <br />
 
