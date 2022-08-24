@@ -14,6 +14,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 ### GitHub account
 - Create an account on [GitHub](https://github.com/join) (Only if you do not have an account)
 - Fork [this](https://github.com/UniCourt/DataEngineering-Workshop1) repository and then clone it to your machine
+- Make sure to clone the repository using SSH Key. You can refer [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to create a new SSH Key if you don't have a Key.
 - You can refer [this](https://docs.github.com/en/get-started/quickstart/fork-a-repo) guide to understand how to fork and clone
 
 ### Docker
