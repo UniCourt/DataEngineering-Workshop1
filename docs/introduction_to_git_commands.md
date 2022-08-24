@@ -15,7 +15,7 @@ Make a repository in GitHub
      Copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.
 Clone the repository to your computer
 
-     git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+     git clone git@github.com:[username]/[repository_name].git
     
 Make a local change, commit, and push
 
