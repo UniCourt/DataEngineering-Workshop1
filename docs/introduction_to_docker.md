@@ -104,7 +104,7 @@ OR
 ```
 docker run -ti alpine:latest
 ```
-Note: You can use Ctrl+D to come up from 
+_Note: You can use Ctrl+D to come out from the docker image._
 
 <br />
 
@@ -122,6 +122,8 @@ Goto the directory where you created **Dockerfile**
 ```
 docker build ./ -t simple_python
 ```
+You may check the image you created using `docker images` command
+
 Run the _**simple_python**_ image you created 
 ```
 docket run -ti simple_python

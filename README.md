@@ -45,7 +45,7 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
       ```
        docker-compose --version
       ```
-     #####  **_docker-compose version 1.25.0, build 0a186604_**
+     ##### **_docker-compose version 1.25.0, build 0a186604_**
 
 ## What will you learn by the end of this workshop?
 - By the end of this workshop you will learn how to build docker image and it's usage.
