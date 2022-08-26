@@ -1,4 +1,4 @@
-# Introduction to Docker.
+# Introduction to Docker
 
 ## Video : Introduction to Docker and Containers 
 
