@@ -69,6 +69,7 @@ Example of pulling alpine:latest image
 ```
 docker pull alpine:latest
 ```
+ _Note: You may find 1000s of docker images in [Docker Hub](https://hub.docker.com/)_ 
 
 <br>
 
