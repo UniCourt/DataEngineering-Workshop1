@@ -110,7 +110,7 @@ docker run -ti alpine:latest
 
 ## Create docker image for python:3.10.2-alpine3.15
    
-Create a  dockerfile
+Create a new file and save it with the name Dockerfile and then paste the below content
 ```
 FROM python:3.10.2-alpine3.15
 # Create directories  

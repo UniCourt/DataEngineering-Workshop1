@@ -13,8 +13,16 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 
 ### GitHub account
 - Create an account on [GitHub](https://github.com/join) (Only if you do not have an account)
-- Fork [this](https://github.com/UniCourt/DataEngineering-Workshop1) repository and then clone it to your machine using SSH Key. You can refer [this](https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent) to create a new SSH Key if you don't have a Key.
+- Fork [this](https://github.com/UniCourt/DataEngineering-Workshop1) repository and then clone it to your machine using SSH Key. You can refer this to create a new SSH Key if you don't have a Key: https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent.
 - You can refer [this](https://docs.github.com/en/get-started/quickstart/fork-a-repo) guide to understand how to fork a repository and [this](https://www.theserverside.com/blog/Coffee-Talk-Java-News-Stories-and-Opinions/github-clone-with-ssh-keys) guide to clone using SSH Key.
+- Make sure you have set up SSH key as per the above documentation.
+- Open your forked repo link in your browser. 
+- Click on Code (Green color button).
+- Select SSH option and copy the link.
+- Clone the repo
+  ```
+     git clone <copied link>
+  ```
 
 ### Docker
 - To install docker go to your cloned repository and run the following command
