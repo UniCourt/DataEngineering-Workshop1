@@ -1,16 +1,9 @@
 # Introduction to Webscraping.
-<br />
 
-## urllib2/requests:
-   
-### Request
-<br />
-
-```
+## Request
 Introduction: 
 The requests module allows you to send HTTP requests using Python.
-```
-<br />
+
 
 ```
 Important Methods:
@@ -26,23 +19,20 @@ Important Methods:
 
 <br />
      
-```          
 Example: Using GET
+```          
 import requests
 response_object = requests.get('https://www.lipsum.com/')
 html = response_object.content
-```      
-<br />
-
-### Urllib
-<br />
-
 ```
+<br />
+
+## Urllib
+
 Introduction:
 It is a Python 3 package that allows you to access, and interact with, websites using their URL’s (Uniform Resource Locator).
 It has several modules for working with URL’s.
-```
-<br />
+
 
 ```
 Urllib.request
@@ -52,19 +42,17 @@ Urllib.error
 ```
 > Explore here: [https://www.geeksforgeeks.org/python-urllib-module/](https://www.geeksforgeeks.org/python-urllib-module/)
 
-<br />
 
-```
 Example: 
+```
 import urllib.request
 request_url = urllib.request.urlopen('https://www.lipsum.com/')
 print(request_url.read())
 
 ```
-<br />
 
 ## Beautifulsoup
-<br />
+
 
 ```
 Introduction:   
@@ -90,9 +78,9 @@ find_all(name, attrs, recursive, string, limit, **kwargs)
 > Explore here: [https://www.crummy.com/software/BeautifulSoup/bs4/doc/](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 <br />
+Example: 
 
 ```
-Example:
 html = """
 <html>
 <head> <title> Beautiful Soup Example </title> </head>
@@ -106,13 +94,10 @@ print(soup.title)
 <br />
 
 ## Regex
-<br />
 
-```
 Introduction
 The Python module re provides full support for Perl-like regular expressions in Python
-```
-<br />
+
 
 ```
    
@@ -157,11 +142,9 @@ Important Special Sequences
 
 ## Writing a script using the above packages and run it in Docker
 <br />
-
-```
-Python Script: 
 Filename: web_scraping_sample.py
 
+```
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -185,10 +168,9 @@ for i in range(len(qes_list)):
 ```
 <br />
 
-```
-Creating a dockerfile:
-Filename: Dockerfile
-		
+### Creating a dockerfile
+Filename: **Dockerfile**
+```		
 FROM python:3.10.2-alpine3.15
 # Create directories  
 RUN mkdir -p /root/workspace/src
@@ -201,11 +183,12 @@ RUN pip install requests bs4 html5lib
 CMD ["web_scraping_sample.py"]
 ENTRYPOINT ["python"]
 ```
-<br />
 
+Build docker image
 ```
-Build docker image and run:
-
 docker build --no-cache --network=host ./ -t simple_python
+```
+Run docker image
+```
 docker run --network=host simple_python
 ```

@@ -53,12 +53,9 @@ To find the installed docker version
 Command:
 ```
 docker  --version
-``` 
-Example:
 ```
-docker --version
-Docker version 20.10.12, build e91ed57
-```
+##### **_Docker version 20.10.12, build e91ed57_**
+
 
 <br>
 
@@ -99,18 +96,21 @@ docker run [options] <IMAGE>
 > Explore here: [https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04](https://www.digitalocean.com/community/tutorials/how-to-install-and-use-docker-on-ubuntu-20-04)
 
 
-Example of running alpine:latest image, the options -t allows us to acces the terminal and -i gets stdin stream added. Basicaly using -ti adds the terminal driver.
+Example of running alpine:latest image, the options -t allows us to access the terminal and -i gets stdin stream added. Basicaly using -ti adds the terminal driver.
 ```
 docker run -t -i alpine:latest
-or
+```
+OR
+```
 docker run -ti alpine:latest
 ```
+Note: You can use Ctrl+D to come up from 
 
 <br />
 
 ## Create docker image for python:3.10.2-alpine3.15
    
-Create a new file and save it with the name Dockerfile and then paste the below content
+Create a new file called _**Dockerfile**_ and then paste the below content
 ```
 FROM python:3.10.2-alpine3.15
 # Create directories  
@@ -118,7 +118,11 @@ RUN mkdir -p /root/workspace/src
 # Switch to project directory
 WORKDIR /root/workspace/src
 ```
-Goto the directory where you created Dockerfile
+Goto the directory where you created **Dockerfile**
 ```
 docker build ./ -t simple_python
+```
+Run the _**simple_python**_ image you created 
+```
+docket run -ti simple_python
 ```

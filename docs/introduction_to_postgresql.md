@@ -75,8 +75,8 @@ Things to Note
 <br />
 
 ## Create PostgresSql docker container 
-#### Note: Add below container in existing docker-compose.yml file 
-```
+- Add below container in existing **_docker-compose.yml_** file 
+  ```
   psql-db:
     image: 'postgres:14'
     container_name: psql-db
@@ -86,22 +86,23 @@ Things to Note
       - POSTGRES_PASSWORD=123456
     ports:
       - '5434:5432'
-```
+  ```
 
-```
-Get the containers up.
+
+- Get the containers up.
+  ```
      docker-compose up -d
-```
+  ```
 
-```
-Login to the container.
+- Login to the container.
+  ```
      docker exec -it psql-db bash
-```
+  ```
 
-```
-Login to postgres database
+- Login to postgres database
+  ```
      psql -U postgres
-```
+  ```
 
 # Example
 - Create database demo
@@ -171,4 +172,4 @@ Login to postgres database
     RIGHT JOIN zoo_2 ON zoo_1.animal = zoo_2.animal;
     ```
 
-### Write a query for RIGHT OUTER JOIN and FULL OUTER JOIN. 
+> Write a query for RIGHT OUTER JOIN and FULL OUTER JOIN. 
