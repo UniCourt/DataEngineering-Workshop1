@@ -21,61 +21,50 @@ Then, with a single command, you create and start all the services from your con
 <br />
 
 ### Exercise
+ - Create a new docker file.
+    ```
+    FROM python:3.10.2-alpine3.15
+    # Create directories  
+    RUN mkdir -p /root/workspace/src
+    COPY ./web_scraping_sample.py  /root/workspace/src
+    # Switch to project directory
+    WORKDIR /root/workspace/src
+    # Install required packages
+    RUN pip install --upgrade pip
+    RUN pip install requests bs4 html5lib
+    ```
+ - Build docker image
+    ```
+    docker build --no-cache --network=host ./ -t workshop1 
+    ```
+ - Create a docker-compose file.
+   - Filename: docker-compose.yml
+    ```  
+    version: "3"
+    services:
+     python_service:
+       build:
+         context: ./
+         dockerfile: Dockerfile
+       image: workshop1
+       container_name: workshop_python_container
+       stdin_open: true #  docker attach container_id
+       tty: true
+       ports:
+        - "8000:8000"
+       volumes:
+        - .:/app
+    ```
 
-```
-   - Create a new docker file.
-     
-            FROM python:3.10.2-alpine3.15
-            # Create directories  
-            RUN mkdir -p /root/workspace/src
-            COPY ./web_scraping_sample.py  /root/workspace/src
-            # Switch to project directory
-            WORKDIR /root/workspace/src
-            # Install required packages
-            RUN pip install --upgrade pip
-            RUN pip install requests bs4 html5lib
-```
-
-```
-Build docker image
-docker build --no-cache --network=host ./ -t workshop1 
-```
-
-```
-Create a docker-compose file.
-Filename: docker-compose.yml
-     
-version: "3"
-services:
- python_service:
-   build:
-     context: ./
-     dockerfile: Dockerfile
-   image: workshop1
-   container_name: workshop_python_container
-   stdin_open: true #  docker attach container_id
-   tty: true
-   ports:
-    - "8000:8000"
-   volumes:
-    - .:/app
-              
-```
-<br />
-
-```
-Get the containers up.
+- Get the containers up.
+    ``` 
      docker-compose up -d
-```
-<br />
-
-```
-Login to the container.
+    ```
+- Login to the container.
+    ```
      docker exec -it workshop_python_container sh
-```
-<br />
-
-```
-Run the script for web scrapping inside the container.
+    ```
+- Run the script for web scrapping inside the container.
+    ```
      python web_scraping_sample.py
-```
+    ```
