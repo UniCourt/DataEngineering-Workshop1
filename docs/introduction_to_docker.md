@@ -127,5 +127,5 @@ You may check the image you created using `docker images` command
 
 Run the _**simple_python**_ image you created 
 ```
-docket run -ti simple_python
+docker run -ti simple_python
 ```
