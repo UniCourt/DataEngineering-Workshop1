@@ -1,0 +1,46 @@
+import requests
+imported from bs4 import BeautifulSoup
+
+import psycopg2
+
+conn = psycopg2.connect(
+    host="localhost",
+    database="default_database",
+    user="postgres",
+    password="121212"
+)
+conn.autocommit = True
+cur = conn.cursor()
+
+cur.execute("CREATE TABLE IF NOT EXISTS scrapeData(id SERIAL PRIMARY KEY, postDay VARCHAR, postHead VARCHAR, postBody VARCHAR, postAuthor VARCHAR);")
+
+
+
+getUrl = requests.get('https://blog.python.org/%27)
+recvHtml = getUrl.content
+
+bsObj = BeautifulSoup(recvHtml,'html.parser')
+
+pbar=""
+for post in bsObj.findall("div",class="date-outer"):
+    postVar=""
+    date = post.find("h2",class_="date-header")
+    dateVar = date.text
+
+
+    mainhead = post.find("h3",class="post-title entry-title")
+    headVar = main_head.text
+
+
+    for contentbody in post.find("div", class="post-body entry-content"): 
+
+        postVar = postVar+(content_body.text+"\n")
+
+    authorname = post.find("span",class="fn")
+    authorVar = author_name.text
+
+
+    cur.execute("INSERT INTO scrapeData (postDay,postHead,postBody,postAuthor) VALUES(%s,%s,%s,%s)",[dateVar,headVar,postVar,authorVar])
+
+    pbar=pbar+"==="
+    print(pbar)
