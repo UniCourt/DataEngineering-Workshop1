@@ -1,16 +1,9 @@
 # Introduction to Webscraping.
-<br />
 
-## urllib2/requests:
-   
-### Request
-<br />
-
-```
+## Request
 Introduction: 
 The requests module allows you to send HTTP requests using Python.
-```
-<br />
+
 
 ```
 Important Methods:
@@ -22,27 +15,24 @@ Important Methods:
     3)delete(url,args)
             Sends a DELETE request to the specified url
 ```    
-> Explore [here](https://www.w3schools.com/python/module_requests.asp)
+> Explore here: [https://www.w3schools.com/python/module_requests.asp](https://www.w3schools.com/python/module_requests.asp)
 
 <br />
      
-```          
 Example: Using GET
+```          
 import requests
 response_object = requests.get('https://www.lipsum.com/')
 html = response_object.content
-```      
-<br />
-
-### Urllib
-<br />
-
 ```
+<br />
+
+## Urllib
+
 Introduction:
 It is a Python 3 package that allows you to access, and interact with, websites using their URL’s (Uniform Resource Locator).
 It has several modules for working with URL’s.
-```
-<br />
+
 
 ```
 Urllib.request
@@ -50,21 +40,19 @@ Urllib.request
 Urllib.error
     This module is used to catch exceptions encountered from url.request
 ```
-> Explore [here](https://www.geeksforgeeks.org/python-urllib-module/)
+> Explore here: [https://www.geeksforgeeks.org/python-urllib-module/](https://www.geeksforgeeks.org/python-urllib-module/)
 
-<br />
 
-```
 Example: 
+```
 import urllib.request
 request_url = urllib.request.urlopen('https://www.lipsum.com/')
 print(request_url.read())
 
 ```
-<br />
 
 ## Beautifulsoup
-<br />
+
 
 ```
 Introduction:   
@@ -87,12 +75,12 @@ find_all(name, attrs, recursive, string, limit, **kwargs)
    You can use find_all to extract all the occurrences of a particular tag from the html
 
 ```
-> Explore [here](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
+> Explore here: [https://www.crummy.com/software/BeautifulSoup/bs4/doc/](https://www.crummy.com/software/BeautifulSoup/bs4/doc/)
 
 <br />
+Example: 
 
 ```
-Example:
 html = """
 <html>
 <head> <title> Beautiful Soup Example </title> </head>
@@ -106,13 +94,10 @@ print(soup.title)
 <br />
 
 ## Regex
-<br />
 
-```
 Introduction
 The Python module re provides full support for Perl-like regular expressions in Python
-```
-<br />
+
 
 ```
    
@@ -157,11 +142,9 @@ Important Special Sequences
 
 ## Writing a script using the above packages and run it in Docker
 <br />
-
-```
-Python Script: 
 Filename: web_scraping_sample.py
 
+```
 import requests
 from bs4 import BeautifulSoup
 import re
@@ -185,23 +168,27 @@ for i in range(len(qes_list)):
 ```
 <br />
 
-```
-Creating a dockerfile:
-Filename: Dockerfile
-		
+### Creating a dockerfile
+Filename: **Dockerfile**
+```		
 FROM python:3.10.2-alpine3.15
 # Create directories  
 RUN mkdir -p /root/workspace/src
 COPY ./web_scraping_sample.py  /root/workspace/src
 # Switch to project directory
 WORKDIR /root/workspace/src
-RUN python web_scraping_sample.py
+# Install required packages
+RUN pip install --upgrade pip
+RUN pip install requests bs4 html5lib
+CMD ["web_scraping_sample.py"]
+ENTRYPOINT ["python"]
 ```
-<br />
 
+Build docker image
 ```
-Build docker image and run:
-
-docker build ./ -t simple_python
-docker run -d  --name container1 simple_python
+docker build --no-cache --network=host ./ -t simple_python
+```
+Run docker image
+```
+docker run --network=host simple_python
 ```

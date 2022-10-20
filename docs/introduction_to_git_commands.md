@@ -15,7 +15,7 @@ Make a repository in GitHub
      Copy the HTTPS clone URL to your clipboard via the green “Clone or Download” button.
 Clone the repository to your computer
 
-     git clone https://github.com/YOUR-USERNAME/YOUR-REPOSITORY.git
+     git clone git@github.com:[username]/[repository_name].git
     
 Make a local change, commit, and push
 
@@ -51,4 +51,8 @@ git config
 The git config command is used initially to configure the user.name and user.email. This specifies what email id and username will be used from a local repository.
 ```
 
-        
+### Creating a pull request
+A pull request – also referred to as a merge request – is an event that takes place in software development when a contributor/developer is ready to begin the process of merging new code changes with the main project repository.
+
+>Refer this link (from "Create a New Branch") :  https://www.digitalocean.com/community/tutorials/how-to-create-a-pull-request-on-github
+
