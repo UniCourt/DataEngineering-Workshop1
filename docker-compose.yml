@@ -1,0 +1,30 @@
+version: "3"
+services:
+ python_service:
+   build:
+     context: ./
+     dockerfile: Dockerfile
+   image: scraping
+   container_name: scrape_container
+   stdin_open: true 
+   tty: true
+   ports:
+    - "8000:8000"
+   volumes:
+    - .:/app
+ psql-db:
+  image: 'postgres:14'
+  container_name: psql-db
+  environment:
+    - PGPASSWORD=123456
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=123456
+    - POSTGRES_DB=default_database
+  ports:
+    - '5434:5432'
+#   volumes:
+#     - database_data:/home/karthik27r/data
+#     - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+# volumes:
+#   database_data:
+#     driver: local
