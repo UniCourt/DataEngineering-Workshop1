@@ -4,8 +4,8 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 
 ## Prerequisites
 
-### Any Linux machine/VM with following packages installed
-- Python 3.6 or above
+### Use [Ubuntu 20.04 LTS](https://releases.ubuntu.com/focal/ubuntu-20.04.5-desktop-amd64.iso) with following packages installed
+- Python 3.9 or above
 - docker
 - [docker-compose](https://docs.docker.com/compose/install/)
 - pip3
