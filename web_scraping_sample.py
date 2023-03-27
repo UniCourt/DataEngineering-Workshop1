@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 import re
 import psycopg2
 
-# Create connection to database
+
 conn = psycopg2.connect(
     host="postgres_service",
     database="LipsumGenerator",
