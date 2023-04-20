@@ -24,6 +24,7 @@ services:
      POSTGRES_PASSWORD: admin
     volumes:
      - .:/var/lib/postgres
+<<<<<<< HEAD
      
   psql-db:
     image: 'postgres:14'
@@ -34,3 +35,5 @@ services:
      - POSTGRES_PASSWORD=123456
     ports:
      - '5434:5432'
+=======
+>>>>>>> a277596b7dccfac3c3af7f34d9135858f182744f
