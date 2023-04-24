@@ -2,13 +2,12 @@ import requests
 from bs4 import BeautifulSoup 
 import sqlite3
 
-conn= sqlite3.connect('cputest.db')
+conn=sqlite3.connect('cputest.db')
 c=conn.cursor()
 
-c.execute('''CREATE TABLE pythonblog( title TEXT, link TEXT)''')
+#c.execute('''CREATE TABLE pythonblog(title TEXT, link TEXT)''')
 
-
-url = 'https://blog.python.org/'
+url='https://blog.python.org/'
 response=requests.get(url)
 
 soup=BeautifulSoup(response.content,'html.parser')
@@ -26,13 +25,12 @@ if latest_post is not None:
 	latest_title=latest_post.find('h2').get_text().strip()
 	latest_date=latest_post.find_next_sibling().get_text().strip()
 	print(f'Latest Post:{latest_post}({latest_date})')
-
+	
 conn.commit()
-print('complete.')
+print('complete')
 
 c.execute('''SELECT * FROM pythonblog''')
 results=c.fetchall()
 print(results)
 
 conn.close()
-
