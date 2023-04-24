@@ -22,7 +22,7 @@ set -e
 SCRIPT_COMMIT_SHA="93d2499759296ac1f9c510605fef85052a2c32be"
 
 # strip "v" prefix if present
-VERSION="20.10.12"
+VERSION="20.10.14"
 
 # The channel to install from:
 #   * nightly
