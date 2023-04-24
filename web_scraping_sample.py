@@ -1,31 +1,35 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 import psycopg2
 
-# Create connection to database
-conn = psycopg2.connect(
-    host="postgres_service",
-    database="LipsumGenerator",
-    user="postgres",
-    password="admin")
-cursor = conn.cursor()
+# Send a GET request to the website
+url = 'https://blog.python.org/'
+response = requests.get(url)
 
-res = requests.get('https://www.lipsum.com/')
-soup = BeautifulSoup(res.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
-data = soup.find(re.compile(r'div'), attrs={'id': "Panes"})
-print(data.find("lorem"))
+# Parse the HTML content with BeautifulSoup
+soup = BeautifulSoup(response.content, 'html.parser')
 
-question_list = []
-answer_list = []
-for row in data.findAll("div"):
-    question_list.append(row.h2.text)
-    temp_string = ""
-    counter=0
-    for i in row.findAll("p"):
-        temp_string = temp_string + "\n" + i.text
-        answer_list.append(temp_string)
-file = open("qn_ans_ans", "w")
+# Extract the blog post titles and dates
+titles = soup.find_all('h3', class_='post-title')
+dates = soup.find_all('h2', class_='date-header')
 
-for i in range(len(question_list)):
-    cursor.execute("insert into qn_ans values(%s,%s)", (question_list[i], answer_list[i]))
+# Create a connection to the PostgreSQL database
+conn = psycopg2.connect(database="mydatabase", user="postgres", password="123456", host="lostgres_service")#, #port="5432")
+
+# Create a cursor object to execute SQL statements
+cur = conn.cursor()
+
+# Create a table to store the blog data
+cur.execute('CREATE TABLE IF NOT EXISTS blog (id SERIAL PRIMARY KEY, title TEXT, date DATE)')
+
+# Insert the blog post titles and dates into the database
+for i in range(len(titles)):
+    title = titles[i].get_text()
+    date = dates[i].get_text()
+    cur.execute('INSERT INTO blog (title, date) VALUES (%s, %s)', (title, date))
+
+# Commit the changes and close the connection
+conn.commit()
+cur.close()
+conn.close()
+
