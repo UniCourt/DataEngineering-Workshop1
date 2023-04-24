@@ -22,7 +22,11 @@ set -e
 SCRIPT_COMMIT_SHA="93d2499759296ac1f9c510605fef85052a2c32be"
 
 # strip "v" prefix if present
+<<<<<<< HEAD
+VERSION="20.10.17"
+=======
 VERSION="20.10.12"
+>>>>>>> a277596b7dccfac3c3af7f34d9135858f182744f
 
 # The channel to install from:
 #   * nightly
@@ -627,4 +631,8 @@ do_install() {
 
 # wrapped up in a function so that we have some protection against only getting
 # half the file during "curl | sh"
+<<<<<<< HEAD
 do_install
+=======
+do_install
+>>>>>>> a277596b7dccfac3c3af7f34d9135858f182744f
