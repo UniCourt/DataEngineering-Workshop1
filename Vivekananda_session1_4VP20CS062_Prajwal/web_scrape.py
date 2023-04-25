@@ -32,7 +32,7 @@ db_password = '123456'
 db_host = '172.17.0.2'
 db_port = '5432'
 
-# Connect to the database
+# Connection to database
 conn = psycopg2.connect(
     dbname=db_name,
     user=db_user,
@@ -41,10 +41,10 @@ conn = psycopg2.connect(
     port=db_port
 )
 
-# Create a cursor object
+#cursor obj
 cur = conn.cursor()
 
-# Create the table
+#creating table
 cur.execute("""
     CREATE TABLE IF NOT EXISTS blog_data2 (
         id SERIAL PRIMARY KEY,
@@ -52,7 +52,7 @@ cur.execute("""
     )
 """)
 
-# Insert the links into the table
+# Inserting into tables
 for link in links:
     cur.execute("""
         INSERT INTO blog_data2 (link)
@@ -64,7 +64,7 @@ for i in range(4):
 		)
 	
 
-# Commit the changes and close the database connection
+
 conn.commit()
 cur.close()
 conn.close()
