@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:13
+    container_name: postgres_container
+    environment:
+      POSTGRES_DB: blogdata
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    networks:
+      - blog_net
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  scraper:
+    build: .
+    container_name: scraper_container
+    environment:
+      DB_NAME: blogdata
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_HOST: db
+      DB_PORT: 5432
+    depends_on:
+      - db
+    networks:
+      - blog_net
+
+networks:
+  blog_net:
+    external: true
+
+volumes:
+  pgdata:
