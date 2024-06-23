@@ -1,26 +1,31 @@
-version: "3"
-services:
-  pyhton_service:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: workshop1
-    container_name: workshop_python_container
-    stdin_open: true #  docker attach container_id
-    tty: true
-    ports:
-     - "8000:8000"
-    volumes:
-     - .:/app
-    depends_on:
-     - postgres_service
+version: '3.8'
 
-  postgres_service:
-    image: postgres
-    container_name: workshop_postgres_container
-    ports:
-     - "5432:5432"
+services:
+  db:
+    image: postgres:13
     environment:
-     POSTGRES_PASSWORD: admin
+      POSTGRES_DB: pyscraper
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
     volumes:
-     - .:/var/lib/postgres
+      - db-data:/var/lib/postgresql/data
+
+  web:
+    build: .
+    depends_on:
+      - db
+    environment:
+      DB_NAME: pyscraper
+      DB_USER: postgres
+      DB_PASSWORD: password
+      DB_HOST: db
+      DB_PORT: 5432
+    volumes:
+      - .:/app
+
+volumes:
+  db-data:
+
+
