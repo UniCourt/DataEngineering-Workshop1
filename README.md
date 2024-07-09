@@ -65,3 +65,17 @@ One Day workshop on understanding Docker, Web Scrapping, Regular Expressions, Po
 | 04:00 - 04:30 |  [`Introduction to Github`](/docs/introduction_to_git_commands.md)
 | 04:30 - 04:45 |  `Q & A`
 | 04:45 - 05:00 |  [`Wrapping Up`](/docs/workshop1_home_work.md)
+
+
+The project focuses on extracting specific information—date, title, author, and content—from the "https://blog.python.org/" website using Beautiful Soup, a  web scraping library in Python. The extracted data is stored in a PostgreSQL database for structured storage. To streamline the deployment and ensure consistency across different environments, the entire setup is containerized using Docker. Docker Compose is to manage multi-container Docker applications, making it easier to define and run the PostgreSQL database and the web scraping script within isolated containers. This approach not only simplifies the development process but also enhances scalability and maintainability, allowing for seamless updates and modifications. By containerizing the application, the project ensures a portable and reproducible environment, reducing the complexities associated with dependency management and environment configuration.
+
+steps to follow:
+1. To  build the image  "sudo docker-compose build"
+
+2. To run th container  "sudo docker-compose up"
+
+3. To login into postgres "sudo docker exec -it <container id>   psql -U postgres -d postgres"
+
+4. SELECT * FROM scrapped_contents 
+
+5. To stop the container "sudo docker-compose down"

@@ -1,0 +1,31 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:latest
+    container_name: python-blog-db
+    environment:
+      POSTGRES_DB: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    ports:
+      - "5434:5432"
+    volumes:
+      - db-data:/var/lib/postgresql/data
+
+  web:
+    build:
+      context: .
+    container_name: python-blog-scraper
+    depends_on:
+      - db
+    environment:
+      DB_NAME: postgres
+      DB_USER: postgres
+      DB_PASSWORD: postgres
+      DB_HOST: db
+      DB_PORT: "5432"
+
+volumes:
+  db-data:
+    driver: local
