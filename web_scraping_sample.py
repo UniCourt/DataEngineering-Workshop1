@@ -2,7 +2,7 @@ import requests
 from bs4 import BeautifulSoup
 import re
 
-res = requests.get('https://www.lipsum.com/')
+res = requests.get('https://docs.docker.com/desktop/install/ubuntu/')
 soup = BeautifulSoup(res.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
 data = soup.find('div', id=re.compile(r"Panes"))
 print(soup.find("h1").text)
