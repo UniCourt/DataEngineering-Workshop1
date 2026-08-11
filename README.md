@@ -44,6 +44,15 @@ docker --version
 docker-compose --version
 ```
 
+Or run the automated check:
+
+```bash
+chmod +x scripts/check_setup.sh
+./scripts/check_setup.sh
+```
+
+If anything fails, see the [Setup & Troubleshooting Guide](docs/setup_and_troubleshooting.md).
+
 Example versions (yours may be newer):
 
 - `git version 2.25.1`
