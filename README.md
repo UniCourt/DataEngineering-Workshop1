@@ -27,7 +27,7 @@ Use [Ubuntu 20.04 LTS](https://releases.ubuntu.com/focal/ubuntu-20.04.5-desktop-
 ```bash
 git clone git@github.com:<YOUR-GIT-ID>/DataEngineering-Workshop1.git
 ```
-
+Git branch practice completed.
 ### Install Docker
 
 From your cloned repository, run:
