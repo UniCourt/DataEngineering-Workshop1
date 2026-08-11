@@ -1,0 +1,9 @@
+FROM python:3.10.2-alpine3.15
+
+WORKDIR /app
+
+COPY scrape_w3schools.py .
+
+RUN pip install --no-cache-dir requests beautifulsoup4 html5lib
+
+CMD ["python", "scrape_w3schools.py"]
