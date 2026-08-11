@@ -22,7 +22,7 @@ set -e
 SCRIPT_COMMIT_SHA="93d2499759296ac1f9c510605fef85052a2c32be"
 
 # strip "v" prefix if present
-VERSION="20.10.12"
+VERSION=""
 
 # The channel to install from:
 #   * nightly
@@ -437,7 +437,7 @@ do_install() {
 				fi
 				if version_gte "20.10" && [ "$(uname -m)" = "x86_64" ]; then
 						# also install the latest version of the "docker scan" cli-plugin (only supported on x86 currently)
-						pkgs="$pkgs docker-scan-plugin"
+:
 				fi
 				pkgs="$pkgs docker-ce${pkg_version%=}"
 				if ! is_dry_run; then
