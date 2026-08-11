@@ -66,7 +66,7 @@ try:
         )
 
     connection.commit()
-
+# GitHub scraper with PostgreSQL storage
     print("\n========== DATABASE ==========")
     print("GitHub results stored successfully in PostgreSQL.")
 
