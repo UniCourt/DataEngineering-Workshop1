@@ -1,9 +1,18 @@
 FROM python:3.10.2-alpine3.15
-# Create directories  
+
+# Install build deps needed for psycopg2
+RUN apk add --no-cache gcc musl-dev postgresql-dev
+
+# Create working directory
 RUN mkdir -p /root/workspace/src
-COPY ./web_scraping_sample.py  /root/workspace/src
-# Switch to project directory
 WORKDIR /root/workspace/src
-# Install required packages
+
+# Install Python packages
+COPY requirements.txt .
 RUN pip install --upgrade pip
-RUN pip install requests bs4 html5lib
+RUN pip install -r requirements.txt
+
+# Copy project files
+COPY . .
+
+CMD ["python", "main.py"]
