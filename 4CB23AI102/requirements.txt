@@ -1,0 +1,4 @@
+requests
+beautifulsoup4
+html5lib
+psycopg2-binary

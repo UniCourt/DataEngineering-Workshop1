@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  psql-db:
+    image: 'postgres:14'
+    container_name: psql-db
+    environment:
+      - PGPASSWORD=123456
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+      - POSTGRES_DB=postgres
+    ports:
+      - '5434:5432'
+    volumes:
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+  app:
+    build: .
+    container_name: scraper-app
+    depends_on:
+      - psql-db
+    volumes:
+      - ./:/root/workspace/src/
+    environment:
+      - DB_HOST=psql-db
+      - DB_USER=postgres
+      - DB_PASSWORD=123456
+      - DB_NAME=postgres
+      - DB_PORT=5432
+    stdin_open: true
+    tty: true
