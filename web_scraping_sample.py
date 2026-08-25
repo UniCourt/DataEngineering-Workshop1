@@ -1,28 +1,38 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 
-res = requests.get('https://www.lipsum.com/')
-soup = BeautifulSoup(res.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
-data = soup.find('div', id=re.compile(r"Panes"))
-print(soup.find("h1").text)
+URL = 'https://nitte.edu.in/'
+headers = {
+    'User-Agent': 'Mozilla/5.0'
+}
 
-question_list = []
-answer_list = []
-for row in data.find_all("div"):
-    question_header = row.h2
-    question_list.append(question_header.text)
-    answer_string = ""
-    parent_div_element = row.find_parent("div")
-    all_p_tag_list = parent_div_element.find_all("p")
-    for p_tag in all_p_tag_list:
-        answer_string = answer_string + p_tag.text + "\n"
-    answer_list.append(answer_string)
 
-file = open("qn_and_answer.txt", "w")
-for i in range(len(question_list)):
-    file.write(question_list[i] + "\n" + answer_list[i] + "\n")
-file.close()
+print(f"Fetching data from {URL}...\n")
+response = requests.get(URL, headers=headers)
+soup = BeautifulSoup(response.content, 'html.parser')
 
-print("The question and answer have been saved to qn_and_answer.txt file")
+# Target .rightItems2 where Sustainable Nitte lives
+section = soup.find('div', class_='rightItems2')
 
+if section:
+    # Extract Heading
+    heading = section.find('h2', class_='head').get_text(strip=True)
+    
+    # Extract Paragraph
+    paragraph = section.find('p').get_text(strip=True)
+    
+    # Extract Read More Link
+    link_tag = section.find('a', class_='btn-one-full')
+    link_url = link_tag['href'] if link_tag else 'No link'
+
+    print(f"=== {heading} ===\n")
+    print(f"{paragraph}\n")
+    print(f"Read More Link: {link_url}\n")
+
+    # Save to file
+    with open('sustainable_nitte.txt', 'w', encoding='utf-8') as f:
+        f.write(f"Heading: {heading}\n\nParagraph:\n{paragraph}\n\nLink: {link_url}\n")
+    
+    print("Result successfully saved to 'sustainable_nitte.txt'!")
+else:
+    print("Could not find the Sustainable Nitte section.")
