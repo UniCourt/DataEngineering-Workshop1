@@ -26,3 +26,34 @@ file.close()
 
 print("The question and answer have been saved to qn_and_answer.txt file")
 
+import psycopg2
+
+# Read the file your scraper just created
+with open("qn_and_answer.txt", "r") as file:
+    scraped_data = file.read()
+
+# Connect to the PostgreSQL container 
+# (Notice the host is 'psql-db', the exact name from your yaml file!)
+conn = psycopg2.connect(
+    host="psql-db",
+    database="demo",
+    user="postgres",
+    password="123456"
+)
+cursor = conn.cursor()
+
+# Create a table and insert the data
+cursor.execute("""
+    CREATE TABLE IF NOT EXISTS web_data (
+        id SERIAL PRIMARY KEY,
+        content TEXT
+    )
+""")
+cursor.execute("INSERT INTO web_data (content) VALUES (%s)", (scraped_data,))
+
+conn.commit()
+cursor.close()
+conn.close()
+
+print("Success: Scraped data saved to PostgreSQL!")
+

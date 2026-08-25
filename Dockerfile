@@ -1,4 +1,4 @@
-FROM python:3.10.2-alpine3.15
+FROM python:3.10-slim
 # Create directories  
 RUN mkdir -p /root/workspace/src
 COPY ./web_scraping_sample.py  /root/workspace/src
@@ -6,4 +6,4 @@ COPY ./web_scraping_sample.py  /root/workspace/src
 WORKDIR /root/workspace/src
 # Install required packages
 RUN pip install --upgrade pip
-RUN pip install requests bs4 html5lib
+RUN pip install requests bs4 html5lib psycopg2-binary
