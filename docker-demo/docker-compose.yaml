@@ -1,23 +1,24 @@
 services:
-  python_service:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: workshop1
-    container_name: workshop_python_container
-    stdin_open: true
-    tty: true
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
+  db:
+    image: postgres:15
 
-  psql-db:
-    image: postgres:14
-    container_name: psql-db
     environment:
-      - PGPASSWORD=123456
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=123456
+      POSTGRES_DB: blogdb
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
     ports:
-      - "5434:5432"
+      - "5432:5432"
+
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d blogdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  scraper:
+    build: .
+
+    depends_on:
+      db:
+        condition: service_healthy
