@@ -1,0 +1,9 @@
+services:
+  pdf_downloader:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: pdf_downloader
+    container_name: pdf_downloader_container
+    volumes:
+      - ./pdfs:/app/pdfs

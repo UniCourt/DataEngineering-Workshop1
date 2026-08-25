@@ -1,0 +1,14 @@
+services:
+  python_service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: workshop1
+    container_name: workshop_python_container
+    stdin_open: true
+    tty: true
+    command: tail -f /dev/null
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
