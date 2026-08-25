@@ -72,3 +72,4 @@ By the end of this workshop, you will be able to:
 | 04:00–04:30 | [Introduction to GitHub](docs/introduction_to_git_commands.md) |
 | 04:30–04:45 | Q & A |
 | 04:45–05:00 | [Wrapping Up](docs/workshop1_home_work.md) |
+Adding new workshop changes for Pull Request
