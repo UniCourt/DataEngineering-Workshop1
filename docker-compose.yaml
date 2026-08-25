@@ -8,7 +8,18 @@ services:
     container_name: workshop_python_container
     stdin_open: true
     tty: true
+    entrypoint: ["/bin/sh","-c"]
+    command: tail -f /dev/null
     ports:
       - "8000:8000"
     volumes:
       - .:/app
+  psql-db:
+    image: postgres:14
+    container_name: psql-db
+    environment:
+      - PGPASSWORD=123456
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - "5434:5432"

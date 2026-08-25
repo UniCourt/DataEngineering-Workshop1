@@ -1,9 +1,22 @@
-FROM python:3.10.2-alpine3.15
+#FROM python:3.10.2-alpine3.15
 # Create directories  
-RUN mkdir -p /root/workspace/src
-COPY ./web_scraping_sample.py  /root/workspace/src
+#RUN mkdir -p /root/workspace/src
+#COPY ./web_scraping_sample.py  /root/workspace/src
 # Switch to project directory
-WORKDIR /root/workspace/src
+#WORKDIR /root/workspace/src
 # Install required packages
+#RUN pip install --upgrade pip
+#RUN pip install requests bs4 html5lib
+#CMD ["web_scraping_sample.py"]
+#ENTRYPOINT ["python"]
+FROM python:3.10-slim
+
+WORKDIR /root/workspace/src
+
+COPY ./pdf_scraper.py .
+
 RUN pip install --upgrade pip
-RUN pip install requests bs4 html5lib
+RUN pip install requests beautifulsoup4 pypdf
+
+ENTRYPOINT ["python"]
+CMD ["pdf_scraper.py"]
