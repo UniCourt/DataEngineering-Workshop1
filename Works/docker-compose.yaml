@@ -1,0 +1,38 @@
+version: "3"
+services:
+ python_service:
+   build:
+     context: ./
+     dockerfile: Dockerfile
+   image: workshop1
+   container_name: workshop_python_container
+   stdin_open: true #  docker attach container_id
+   tty: true
+   ports:
+    - "8000:8000"
+   volumes:
+    - .:/root/workspace/src
+   environment:
+    - DB_HOST=psql-db
+    - DB_NAME=workshop_db
+    - DB_USER=postgres
+    - DB_PASSWORD=postgres
+    - DB_PORT=5432
+   depends_on:
+    - psql-db
+
+ psql-db:
+   image: postgres:14-alpine
+   container_name: workshop_postgres_container
+   restart: always
+   environment:
+    - POSTGRES_DB=workshop_db
+    - POSTGRES_USER=postgres
+    - POSTGRES_PASSWORD=postgres
+   ports:
+    - "5432:5432"
+   volumes:
+    - postgres_data:/var/lib/postgresql/data
+
+volumes:
+ postgres_data:
