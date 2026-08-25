@@ -25,4 +25,3 @@ for i in range(len(question_list)):
 file.close()
 
 print("The question and answer have been saved to qn_and_answer.txt file")
-
