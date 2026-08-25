@@ -1,11 +1,10 @@
-  GNU nano 9.0                                                                  web_scraping_sample.py
 import requests
 from bs4 import BeautifulSoup
 import os
 
 n = int(input("How many PDFs to download? "))
 
-url = "https://sample-files.com/pdf/"
+url = "https://sample-files.com/documents/pdf/"
 soup = BeautifulSoup(requests.get(url).text, "html.parser")
 os.makedirs("pdfs", exist_ok=True)
 
