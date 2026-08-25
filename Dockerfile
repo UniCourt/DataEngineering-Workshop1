@@ -1,9 +1,14 @@
 FROM python:3.10.2-alpine3.15
 # Create directories  
 RUN mkdir -p /root/workspace/src
+COPY ./download_pdf.py /root/workspace/src
 COPY ./web_scraping_sample.py  /root/workspace/src
 # Switch to project directory
 WORKDIR /root/workspace/src
+
 # Install required packages
+RUN apk add --no-cache ca-certificates
 RUN pip install --upgrade pip
 RUN pip install requests bs4 html5lib
+CMD ["web_scraping_sample.py"]
+ENTRYPOINT ["python"]
