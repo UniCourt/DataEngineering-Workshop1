@@ -1,0 +1,23 @@
+services:
+
+  scraper:
+    build: .
+    container_name: python_blog_scraper
+    depends_on:
+      psql-db-homework:
+        condition: service_healthy
+
+  psql-db-homework:
+    image: postgres:14
+    container_name: psql-db-homework
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: demo
+    ports:
+      - "5435:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d demo"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
