@@ -1,0 +1,153 @@
+Name: Dr. NIRANJAN N. CHIPLUNKAR
+Designation: Principal
+-----------------------------
+Name: Dr. JYOTHI SHETTY
+Designation: Professor
+-----------------------------
+Name: Dr. DESAI KARANAM SREEKANTHA
+Designation: Professor
+-----------------------------
+Name: Dr. VENKATRAMANA BHAT P
+Designation: Professor
+-----------------------------
+Name: Dr. SARIKA HEGDE
+Designation: Professor
+-----------------------------
+Name: Dr. RAJU K
+Designation: Professor & Head
+-----------------------------
+Name: Dr.SUDEEPA K B
+Designation: Associate Professor
+-----------------------------
+Name: Dr. PALLAVI K N
+Designation: Associate Professor
+-----------------------------
+Name: Dr. SANNIDHAN M S
+Designation: Associate Professor
+-----------------------------
+Name: Dr. SANDEEP KUMAR HEGDE
+Designation: Associate Professor
+-----------------------------
+Name: Dr. SHABARI SHEDTHI B
+Designation: Associate Professor
+-----------------------------
+Name: Dr. RAGHUNANDAN K R
+Designation: Associate Professor
+-----------------------------
+Name: Dr. RAJALAXMI HEGDE
+Designation: Associate Professor
+-----------------------------
+Name: Dr. VIJAYA MURARI T
+Designation: Associate Professor
+-----------------------------
+Name: Dr. SHASHANK SHETTY
+Designation: Associate Professor & Lead - Innovation and Hackathon Initiatives
+-----------------------------
+Name: Dr. GOVINDARAJ  P
+Designation: Associate Professor
+-----------------------------
+Name: Dr. PRADEEP KANCHAN
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Dr. KEERTHANA B CHIGATERI
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Mr. GURU PRASAD
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Dr. ASMITA POOJARY
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Dr. PUNEETH R P
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Dr. MINU P ABRAHAM.
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Dr. ASHWIN SHENOY M
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: DR. DHASNY  LYDIA M
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Dr. PATEEL G P
+Designation: Asst. Professor Gd.III
+-----------------------------
+Name: Dr. SAVITHA SHETTY
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Mr. SUNIL KUMAR AITHAL S
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Ms. ANKITHA A NAYAK
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Mrs. SHILPA KAREGOUDRA
+Designation: Assistant Professor Gd.III
+-----------------------------
+Name: Mr. SAMPATH KINI
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Mr. PAWAN HEGDE
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Ms. MANASA G R
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Mr. AKHILRAJ V GADAGKAR
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Ms. JAYAPADMINI KANCHAN
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Mrs. SOWMYA P
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Mr. PRITHVIRAJ JAIN
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Ms SOWMYA S
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Mr. SUHAIL AHAMED NISAR SHAHA
+Designation: Assistant  Professor Gd.II
+-----------------------------
+Name: Ms.AISHWARYA. D. SHETTY
+Designation: Assistant Professor Gd.II
+-----------------------------
+Name: Ms. JOYLIN PRIYA PINTO
+Designation: Assistant  Prof. Gd.I
+-----------------------------
+Name: Ms. SOUMYA ASHWATH
+Designation: Assistant Professor Gd.I
+-----------------------------
+Name: Mr. KEERTHI SHETTY
+Designation: Assistant Professor Gd-I
+-----------------------------
+Name: Ms. PRATHWINI
+Designation: Assistant Professor Gd-I
+-----------------------------
+Name: Ms. ANUPAMA H C
+Designation: Assistant  Professor Gd.I
+-----------------------------
+Name: Ms. B VIJETHA
+Designation: Assistant  Professor Gd.I
+-----------------------------
+Name: Ms. SIMRAN BANU
+Designation: Assistant Professor Gd.I
+-----------------------------
+Name: Ms. SADIYA MUBARAK
+Designation: Assistant Professor Gd.I
+-----------------------------
+Name: Ms. SHABANA S
+Designation: Assistant Professor Gd.I
+-----------------------------
+Name: Mr. SHREEKIRAN R BHAT
+Designation: Assistant Professor Gd.I
+-----------------------------
+Name: Mr. SACHIN
+Designation: Assistant Professor Gd.I
+-----------------------------
+Name: Mr. PRAJWAL RAO
+Designation: Assistant Professor Gd.I
+-----------------------------
