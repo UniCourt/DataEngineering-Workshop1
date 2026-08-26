@@ -1,0 +1,17 @@
+services:
+  python_service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: python_scraper
+    container_name: workshop_python_container
+    depends_on:
+      - psql-db
+  psql-db:
+    image: postgres:14
+    container_name: psql-db
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
+    ports:
+      - "5434:5432"
