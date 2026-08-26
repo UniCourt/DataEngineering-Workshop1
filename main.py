@@ -35,11 +35,10 @@ if conn is None:
     raise Exception("Could not connect to database after 5 attempts")
 
 cur = conn.cursor()
-cur.execute("DROP TABLE IF EXISTS blogs")
 cur.execute("""
-    CREATE TABLE blogs (
+    CREATE TABLE IF NOT EXISTS blogs (
         id SERIAL PRIMARY KEY,
-        title TEXT,
+        title TEXT UNIQUE,
         author TEXT,
         published_date TEXT
     )
@@ -47,7 +46,7 @@ cur.execute("""
 
 for title, author, time_text in blogs:
     cur.execute(
-        "INSERT INTO blogs (title, author, published_date) VALUES (%s, %s, %s)",
+        "INSERT INTO blogs (title, author, published_date) VALUES (%s, %s, %s) ON CONFLICT (title) DO NOTHING",
         (title, author, time_text)
     )
 
