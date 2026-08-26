@@ -1,4 +1,3 @@
-version: "3"
 services:
   python_service:
     build:
@@ -6,12 +5,11 @@ services:
       dockerfile: Dockerfile
     image: workshop1
     container_name: workshop_python_container
+    working_dir: /root/workspace/src
     stdin_open: true
     tty: true
-    ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
+    depends_on:
+      - psql-db
   psql-db:
     image: 'postgres:14'
     container_name: psql-db

@@ -10,7 +10,7 @@ soup = BeautifulSoup(res.content, 'html5lib')
 blogs = []
 for article in soup.find_all('article', class_='post-card'):
     title_el = article.find('h3')
-    author_el = article.find('a', class_=lambda c: c and 'font-medium' in c)
+    author_el = article.find(class_=lambda c: c and 'font-medium' in c)
     time_el = article.find('time')
     title = title_el.text.strip() if title_el else 'N/A'
     author = author_el.text.strip() if author_el else 'N/A'
@@ -35,8 +35,9 @@ if conn is None:
     raise Exception("Could not connect to database after 5 attempts")
 
 cur = conn.cursor()
+cur.execute("DROP TABLE IF EXISTS blogs")
 cur.execute("""
-    CREATE TABLE IF NOT EXISTS blogs (
+    CREATE TABLE blogs (
         id SERIAL PRIMARY KEY,
         title TEXT,
         author TEXT,
