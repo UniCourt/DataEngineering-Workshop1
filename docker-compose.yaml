@@ -1,4 +1,3 @@
-version: "3"
 services:
   python_service:
     build:
@@ -6,9 +5,36 @@ services:
       dockerfile: Dockerfile
     image: workshop1
     container_name: workshop_python_container
-    stdin_open: true
-    tty: true
-    ports:
-      - "8000:8000"
+    environment:
+      BLOG_URL: ${BLOG_URL:-https://blog.python.org/blog}
+      MAX_PAGES: ${MAX_PAGES:-100}
+      POSTGRES_HOST: psql-db
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
     volumes:
       - .:/app
+    depends_on:
+      psql-db:
+        condition: service_healthy
+
+  psql-db:
+    image: postgres:14
+    container_name: psql-db
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB:?Set POSTGRES_DB in .env}
+      POSTGRES_USER: ${POSTGRES_USER:?Set POSTGRES_USER in .env}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set POSTGRES_PASSWORD in .env}
+    ports:
+      - "5434:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $$POSTGRES_USER -d $$POSTGRES_DB"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  postgres_data:
