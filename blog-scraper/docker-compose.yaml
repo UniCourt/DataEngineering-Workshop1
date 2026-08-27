@@ -1,0 +1,21 @@
+services:
+  python_service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: blog-scraper
+    container_name: blog_scraper_container
+    working_dir: /root/workspace/src
+    stdin_open: true
+    tty: true
+    depends_on:
+      - psql-db
+  psql-db:
+    image: 'postgres:14'
+    container_name: psql-db
+    environment:
+      - PGPASSWORD=123456
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - '5434:5432'
