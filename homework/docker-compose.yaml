@@ -1,0 +1,51 @@
+services:
+
+  postgres:
+    image: postgres:16
+
+    container_name: python_blogs_postgres
+
+    environment:
+      POSTGRES_DB: python_blogs
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U postgres -d python_blogs"
+        ]
+
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+
+  scraper:
+    build:
+      context: .
+
+    container_name: python_blogs_scraper
+
+    depends_on:
+      postgres:
+        condition: service_healthy
+
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      POSTGRES_DB: python_blogs
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+
+
+volumes:
+  postgres_data:
