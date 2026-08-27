@@ -1,14 +1,13 @@
-version: "3"
 services:
   python_service:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: workshop1
-    container_name: workshop_python_container
-    stdin_open: true
-    tty: true
+    build: .
+    depends_on:
+      - psql-db
+
+  psql-db:
+    image: postgres:14
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: 123456
     ports:
-      - "8000:8000"
-    volumes:
-      - .:/app
+      - "5432:5432"
