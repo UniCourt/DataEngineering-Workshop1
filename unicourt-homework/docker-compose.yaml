@@ -1,0 +1,23 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: unicourt_postgres
+    environment:
+      POSTGRES_DB: unicourt_db
+      POSTGRES_USER: unicourt_user
+      POSTGRES_PASSWORD: unicourt_password
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: unicourt_scraper
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
