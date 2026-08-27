@@ -1,9 +1,5 @@
-FROM python:3.10.2-alpine3.15
-# Create directories  
-RUN mkdir -p /root/workspace/src
-COPY ./web_scraping_sample.py  /root/workspace/src
-# Switch to project directory
-WORKDIR /root/workspace/src
-# Install required packages
+FROM python:3.10-slim
+COPY ./requirements.txt /root/workspace/requirements.txt
 RUN pip install --upgrade pip
-RUN pip install requests bs4 html5lib
+RUN pip install -r /root/workspace/requirements.txt
+WORKDIR /app
