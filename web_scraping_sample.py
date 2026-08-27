@@ -1,31 +1,61 @@
 import requests
 from bs4 import BeautifulSoup
-import re
 import psycopg2
 
-# Create connection to database
+# Connect to PostgreSQL
 conn = psycopg2.connect(
     host="postgres_service",
     database="LipsumGenerator",
     user="postgres",
-    password="admin")
+    password="admin"
+)
+
 cursor = conn.cursor()
 
-res = requests.get('https://www.lipsum.com/')
-soup = BeautifulSoup(res.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
-data = soup.find(re.compile(r'div'), attrs={'id': "Panes"})
-print(data.find("lorem"))
+# Python Blog URL
+url = "https://blog.python.org/"
 
-question_list = []
-answer_list = []
-for row in data.findAll("div"):
-    question_list.append(row.h2.text)
-    temp_string = ""
-    counter=0
-    for i in row.findAll("p"):
-        temp_string = temp_string + "\n" + i.text
-        answer_list.append(temp_string)
-file = open("qn_ans_ans", "w")
+# Request the webpage
+response = requests.get(url)
 
-for i in range(len(question_list)):
-    cursor.execute("insert into qn_ans values(%s,%s)", (question_list[i], answer_list[i]))
+print("Status Code:", response.status_code)
+
+# Parse HTML
+soup = BeautifulSoup(response.content, "html.parser")
+
+# Find blog posts
+posts = soup.find_all("article")
+
+print("Posts found:", len(posts))
+
+# Insert posts into PostgreSQL
+for post in posts:
+    title_tag = post.find(["h2", "h3"])
+
+    if title_tag:
+        title = title_tag.get_text(strip=True)
+
+        # Find date if available
+        date_tag = post.find("time")
+
+        if date_tag:
+            date = date_tag.get_text(strip=True)
+        else:
+            date = "N/A"
+
+        print("Title:", title)
+        print("Date:", date)
+        print("-" * 50)
+
+        cursor.execute(
+            "INSERT INTO qn_ans (question, answer) VALUES (%s, %s)",
+            (title, date)
+        )
+
+# Save changes
+conn.commit()
+
+cursor.close()
+conn.close()
+
+print("Blog data inserted into PostgreSQL successfully.")
