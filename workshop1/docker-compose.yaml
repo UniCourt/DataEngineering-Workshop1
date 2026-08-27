@@ -1,0 +1,36 @@
+version: "3.9"
+
+services:
+  db:
+    image: postgres:16
+    container_name: blogs_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: bloguser
+      POSTGRES_PASSWORD: blogpass
+      POSTGRES_DB: blogsdb
+    ports:
+      - "5432:5432"        # exposed so you can inspect the DB from your host with a client
+    volumes:
+      - pgdata:/var/lib/postgresql/data   # persists data even if the container is removed
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U bloguser -d blogsdb"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  scraper:
+    build: .
+    container_name: blogs_scraper
+    depends_on:
+      db:
+        condition: service_healthy   # wait until Postgres is actually ready
+    environment:
+      POSTGRES_USER: bloguser
+      POSTGRES_PASSWORD: blogpass
+      POSTGRES_HOST: db              # "db" = the service name above, Docker's internal DNS
+      POSTGRES_PORT: 5432
+      POSTGRES_DB: blogsdb
+
+volumes:
+  pgdata:
