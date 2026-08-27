@@ -38,7 +38,7 @@ Then, with a single command, you create and start all the services from your con
     docker build --no-cache --network=host ./ -t workshop1 
     ```
  - Create a docker-compose file.
-   - Filename: docker-compose.yml
+   - Filename: docker-compose.yaml
     ```  
     version: "3"
     services:
@@ -58,7 +58,7 @@ Then, with a single command, you create and start all the services from your con
 
 - Get the containers up.
     ``` 
-     docker-compose up -d
+     docker compose up -d
     ```
 - Login to the container.
     ```
@@ -68,3 +68,5 @@ Then, with a single command, you create and start all the services from your con
     ```
      python web_scraping_sample.py
     ```
+
+> Next session: add a PostgreSQL service (`psql-db`) to this same `docker-compose.yaml`. See [Introduction to PostgreSQL](introduction_to_postgresql.md).

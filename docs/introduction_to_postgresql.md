@@ -74,7 +74,12 @@ Things to Note
 ```
 <br />
 
-## Create PostgresSql docker container 
+## Create PostgreSQL docker container
+
+In this session you **add** a Postgres service to the compose file you created earlier
+(`docker-compose.yaml` in the Workshop1 project root). Keep `python_service` as-is;
+only add `psql-db` next to it under `services:`
+
 - Add below container in existing **_docker-compose.yml_** file 
   ```
   psql-db:
