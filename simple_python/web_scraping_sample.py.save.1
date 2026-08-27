@@ -1,0 +1,6 @@
+import requests
+from bs4 import BeautifulSoup
+import re
+res = requests.get('https://blog.python.org/blog/')
+soup = BeautifulSoup(res.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
+print(data.find('h1'))

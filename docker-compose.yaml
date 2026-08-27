@@ -1,4 +1,3 @@
-version: "3"
 services:
   python_service:
     build:
@@ -12,3 +11,18 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+    depends_on:
+      - postgres_service
+
+  postgres_service:
+    image: postgres
+    container_name: workshop_postgres_container
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_PASSWORD: admin
+    volumes:
+      - postgres_data:/var/lib/postgresql
+
+volumes:
+  postgres_data:

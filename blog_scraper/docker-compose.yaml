@@ -1,0 +1,22 @@
+services:
+
+  postgres:
+    image: postgres:15
+    container_name: blog_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: blogdb
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+
+  scraper:
+    build: .
+    container_name: blog_scraper
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:

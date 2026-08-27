@@ -1,28 +1,61 @@
 import requests
 from bs4 import BeautifulSoup
-import re
+import psycopg2
 
-res = requests.get('https://www.lipsum.com/')
-soup = BeautifulSoup(res.content, 'html5lib') # If this line causes an error, run 'pip install html5lib' or install html5lib
-data = soup.find('div', id=re.compile(r"Panes"))
-print(soup.find("h1").text)
+# Connect to PostgreSQL
+conn = psycopg2.connect(
+    host="postgres_service",
+    database="LipsumGenerator",
+    user="postgres",
+    password="admin"
+)
 
-question_list = []
-answer_list = []
-for row in data.find_all("div"):
-    question_header = row.h2
-    question_list.append(question_header.text)
-    answer_string = ""
-    parent_div_element = row.find_parent("div")
-    all_p_tag_list = parent_div_element.find_all("p")
-    for p_tag in all_p_tag_list:
-        answer_string = answer_string + p_tag.text + "\n"
-    answer_list.append(answer_string)
+cursor = conn.cursor()
 
-file = open("qn_and_answer.txt", "w")
-for i in range(len(question_list)):
-    file.write(question_list[i] + "\n" + answer_list[i] + "\n")
-file.close()
+# Python Blog URL
+url = "https://blog.python.org/"
 
-print("The question and answer have been saved to qn_and_answer.txt file")
+# Request the webpage
+response = requests.get(url)
 
+print("Status Code:", response.status_code)
+
+# Parse HTML
+soup = BeautifulSoup(response.content, "html.parser")
+
+# Find blog posts
+posts = soup.find_all("article")
+
+print("Posts found:", len(posts))
+
+# Insert posts into PostgreSQL
+for post in posts:
+    title_tag = post.find(["h2", "h3"])
+
+    if title_tag:
+        title = title_tag.get_text(strip=True)
+
+        # Find date if available
+        date_tag = post.find("time")
+
+        if date_tag:
+            date = date_tag.get_text(strip=True)
+        else:
+            date = "N/A"
+
+        print("Title:", title)
+        print("Date:", date)
+        print("-" * 50)
+
+        cursor.execute(
+            "INSERT INTO qn_ans (question, answer) VALUES (%s, %s)",
+            (title, date)
+        )
+
+# Save changes
+conn.commit()
+
+cursor.close()
+conn.close()
+
+print("Blog data inserted into PostgreSQL successfully.")
