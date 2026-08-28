@@ -1,4 +1,5 @@
 version: "3"
+
 services:
   python_service:
     build:
@@ -12,3 +13,13 @@ services:
       - "8000:8000"
     volumes:
       - .:/app
+
+  psql-db:
+    image: postgres:14
+    container_name: workshop_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: workshop
+    ports:
+      - "5432:5432"
