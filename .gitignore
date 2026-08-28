@@ -1,0 +1,6 @@
+venv/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+qn_and_answer.txt
