@@ -1,0 +1,27 @@
+version: "3"
+services:
+  python_service:
+    build:
+      context: ./
+      dockerfile: dockerfile
+    image: homework
+    container_name: workshop_container_homework1
+    stdin_open: true 
+    tty: true
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/app
+   
+
+  psql-db:
+    image: "postgres:16"
+    container_name: psql-db3
+    environment:
+      - PGPASSWORD=123456
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=123456
+    ports:
+      - "5434:5432"
+    volumes:
+      - ./pgdata:/var/lib/postgresql/data  

@@ -1,0 +1,18 @@
+
+FROM python:3.10.2-alpine3.15
+
+RUN mkdir -p /root/workspace/src
+COPY ./database.py /root/workspace/src
+COPY ./postedBy.py /root/workspace/src
+WORKDIR /root/workspace/src
+
+RUN pip install --upgrade pip
+RUN pip install requests bs4 html5lib
+
+RUN pip install --no-cache-dir --upgrade pip
+
+RUN apk add --no-cache postgresql-dev gcc python3-dev musl-dev
+
+RUN pip install --no-cache-dir requests bs4 html5lib psycopg2-binary
+CMD [ "database.py"]
+ENTRYPOINT ["python"]
