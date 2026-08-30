@@ -1,0 +1,27 @@
+version: "3"
+services:
+  pyhton_service:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    image: workshop
+    container_name: scraper_python_container
+    stdin_open: true
+    tty: true
+    ports:
+     - "8000:8000"
+    volumes:
+     - .:/app
+    depends_on:
+     - postgres_service
+
+  postgres_service:
+    image: postgres
+    container_name: scraper_postgres_container
+    ports:
+     - "5432:5432"
+    environment:
+     POSTGRES_USER : postgres
+     POSTGRES_PASSWORD: admin
+    volumes:
+     - .:/var/lib/postgres

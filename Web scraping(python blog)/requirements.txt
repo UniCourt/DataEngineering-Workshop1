@@ -1,0 +1,5 @@
+psycopg2-binary
+bs4
+
+requests
+html5lib==1.1
