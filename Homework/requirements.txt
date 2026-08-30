@@ -1,0 +1,4 @@
+psycopg2-binary==2.9.3
+beautifulsoup4==4.11.1
+requests==2.27.1
+html5lib==1.1
