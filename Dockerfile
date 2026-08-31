@@ -1,14 +1,9 @@
-FROM python:3.10.2-alpine3.15
+FROM python:3.11-slim
 
-RUN mkdir -p /root/workspace/src
+WORKDIR /app
 
-COPY ./web_scraping_sample.py /root/workspace/src
+COPY . /app
 
-WORKDIR /root/workspace/src
+RUN pip install --no-cache-dir requests beautifulsoup4 html5lib psycopg2-binary
 
-RUN pip install --upgrade pip
-RUN pip install requests bs4 html5lib
-
-CMD ["web_scraping_sample.py"]
-
-ENTRYPOINT ["python"]
+CMD ["python", "blog_scraper.py"]
