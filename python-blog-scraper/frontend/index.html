@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Python Blog Scraper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="/" class="logo">
+                🐍 Python Blog Scraper
+            </a>
+            <nav class="navigation">
+                <a href="/">Home</a>
+                <a href="#about">About</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Latest Python News</h1>
+                <p>
+                    Stay updated with the latest news,
+                    releases, and developments from the Python ecosystem.
+                </p>
+            </div>
+        </section>
+        <section class="posts-section">
+            <div class="container">
+                <div class="section-heading">
+                    <h2>Recent Posts</h2>
+                    <span id="post-count">0 posts</span>
+                </div>
+		<div class="search-container">
+		    <input type="search" id = "search-input" placeholder = "Search blog posts..">
+		</div>
+                <div id="posts-container" class="posts-grid">
+                </div>
+                <p id="loading-message">
+                    Loading posts...
+                </p>
+                <p id="error-message" hidden>
+                    Failed to load posts.
+                </p>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>
+                Python Pulse &copy; 2026
+            </p>
+        </div>
+    </footer>
+    <script src="script.js"></script>
+</body>
+</html>

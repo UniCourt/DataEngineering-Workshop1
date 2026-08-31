@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post | Python Blog Scraper</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="site-header">
+        <div class="container header-content">
+            <a href="index.html" class="logo">
+                🐍 Python Blog Scraper
+            </a>
+            <nav class="navigation">
+                <a href="index.html">Home</a>
+                <a href="#">About</a>
+            </nav>
+        </div>
+    </header>
+    <main>
+        <section class="post-detail">
+            <div class="container">
+                <a href="index.html" class="back-link">← Back to posts</a>
+                <p id="loading-message">Loading post...</p>
+
+                <p id="error-message" hidden>Failed to load post.</p>
+                <article id="post-content" hidden>
+                    <h1 id="post-title"></h1>
+                    <div class="post-meta">
+                        <span id="post-author"></span>
+                        <span>•</span>
+                        <span id="post-date"></span>
+                    </div>
+                    <div class="post-body">
+                        <p id="post-summary"></p>
+                        <a id="original-link" class="read-more" target="_blank" rel="noopener noreferrer">Read original article →</a>
+                    </div>
+                </article>
+            </div>
+        </section>
+    </main>
+    <footer class="site-footer">
+        <div class="container">
+            <p>Python Blog Scraper</p>
+        </div>
+    </footer>
+    <script src="post.js"></script>
+</body>
+</html>
