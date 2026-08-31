@@ -1,0 +1,39 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: python-blog-postgres
+
+    environment:
+      POSTGRES_DB: python_blog_db
+      POSTGRES_USER: blog_app
+      POSTGRES_PASSWORD: kpratham123
+
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+      - ./init.sql:/docker-entrypoint-initdb.d/init.sql
+
+    ports:
+      - "5433:5432"
+
+
+  app:
+    build: .
+    container_name: python-blog-app
+
+    depends_on:
+      - postgres
+
+    environment:
+      DB_HOST: postgres
+      DB_PORT: 5432
+      DB_NAME: python_blog_db
+      DB_USER: blog_app
+      DB_PASSWORD: kpratham123
+
+    ports:
+      - "5000:5000"
+
+
+volumes:
+  postgres_data:
