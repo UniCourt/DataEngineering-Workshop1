@@ -1,0 +1,6 @@
+venv/
+job_scraper/venv/
+__pycache__/
+*.pyc
+.env
+

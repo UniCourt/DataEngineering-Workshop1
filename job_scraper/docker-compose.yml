@@ -1,0 +1,19 @@
+services:
+
+  postgres:
+    image: postgres:16
+    container_name: job_scraper_postgres
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: scraper_db
+    ports:
+      - "5433:5432"
+
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: job_scraper
+    depends_on:
+      - postgres

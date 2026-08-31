@@ -1,4 +1,3 @@
-version: "3"
 services:
   python_service:
     build:
@@ -11,4 +10,14 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - .:/app
+      - ./:/app
+
+  postgres_service:
+    image: postgres:14
+    container_name: psql-db
+    environment:
+      POSTGRES_DB: LipSumGenerator
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: admin
+    ports:
+      - "5434:5432"
