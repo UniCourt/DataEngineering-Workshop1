@@ -1,14 +1,21 @@
-version: "3"
 services:
-  python_service:
-    build:
-      context: ./
-      dockerfile: Dockerfile
-    image: workshop1
-    container_name: workshop_python_container
-    stdin_open: true
-    tty: true
+  postgres:
+    image: postgres:16
+    container_name: blog-postgres
+    environment:
+      POSTGRES_DB: blogs
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
     ports:
-      - "8000:8000"
+      - "5432:5432"
     volumes:
-      - .:/app
+      - postgres_data:/var/lib/postgresql/data
+
+  scraper:
+    build: .
+    container_name: blog-scraper
+    depends_on:
+      - postgres
+
+volumes:
+  postgres_data:
