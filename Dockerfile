@@ -1,14 +1,11 @@
-FROM python:3.10.2-alpine3.15
+FROM python:3.9
 
-# Create directories
-RUN mkdir -p /root/workspace/src
+WORKDIR /root/workspace
 
-# Copy Python script into container
-COPY ./web_scraping_sample.py /root/workspace/src
+COPY requirements.txt .
 
-# Switch to project directory
-WORKDIR /root/workspace/src
+RUN pip install --no-cache-dir -r requirements.txt
 
-# Install required packages
-RUN pip install --upgrade pip
-RUN pip install requests bs4 html5lib
+COPY python_blog_scraper.py .
+
+CMD ["python", "python_blog_scraper.py"]
