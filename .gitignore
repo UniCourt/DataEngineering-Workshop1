@@ -1,0 +1,59 @@
+# ── Python ────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.so
+*.egg
+*.egg-info/
+dist/
+build/
+.eggs/
+.Python
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Virtual environments
+.venv/
+venv/
+env/
+ENV/
+.env.venv/
+
+# ── Environment / Secrets ─────────────────────────────────────────────────
+.env
+*.env
+!.env.example          # keep the template, never the real values
+
+# ── Docker ────────────────────────────────────────────────────────────────
+# Don't commit local override files
+docker-compose.override.yml
+
+# ── Logs ──────────────────────────────────────────────────────────────────
+logs/
+*.log
+
+# ── Database / Data ───────────────────────────────────────────────────────
+*.sql.bak
+*.dump
+postgres_data/
+
+# ── OS junk ───────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── IDEs ──────────────────────────────────────────────────────────────────
+.vscode/
+.idea/
+*.iml
+*.suo
+*.swp
+*.swo
+*~
+
+# ── Pytest / Coverage ─────────────────────────────────────────────────────
+.pytest_cache/
+.coverage
+htmlcov/
+.tox/

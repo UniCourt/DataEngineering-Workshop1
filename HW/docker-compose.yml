@@ -1,0 +1,54 @@
+version: "3.9"
+
+# ── Services ──────────────────────────────────────────────────────────────
+
+services:
+
+  # ── PostgreSQL database ─────────────────────────────────────────────────
+  db:
+    image: postgres:15-alpine
+    container_name: workshop1_db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB:       ${POSTGRES_DB:-scraper_db}
+      POSTGRES_USER:     ${POSTGRES_USER:-scraper_user}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-scraper_pass}
+    ports:
+      - "5432:5432"          # expose so you can connect with pgAdmin / psql
+    volumes:
+      - postgres_data:/var/lib/postgresql/data   # persist data across restarts
+      - ./sql/init.sql:/docker-entrypoint-initdb.d/01_init.sql  # auto-run on first start
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-scraper_user} -d ${POSTGRES_DB:-scraper_db}"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+      start_period: 10s
+
+  # ── Python scraper ──────────────────────────────────────────────────────
+  scraper:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      target: runtime
+    container_name: workshop1_scraper
+    depends_on:
+      db:
+        condition: service_healthy   # wait until Postgres says it's ready
+    environment:
+      # DB connection — read from .env or fall back to defaults
+      DB_HOST:     db
+      DB_PORT:     5432
+      DB_NAME:     ${POSTGRES_DB:-scraper_db}
+      DB_USER:     ${POSTGRES_USER:-scraper_user}
+      DB_PASSWORD: ${POSTGRES_PASSWORD:-scraper_pass}
+      LOG_LEVEL:   ${LOG_LEVEL:-INFO}
+    volumes:
+      - ./logs:/app/logs             # persist log files on the host
+
+
+# ── Volumes ───────────────────────────────────────────────────────────────
+
+volumes:
+  postgres_data:
+    driver: local
